@@ -33,6 +33,8 @@ exports.BusinessUnit_PostData = async function (req, res, next) {
       Name: req.body.Name,
       CreateBy: req.body.CreateBy,
       ModifiedBy: req.body.ModifiedBy,
+      ModifiedDate: req.body.ModifiedDate,
+      CreateDate : req.body.CreateDate
     };
     const BusinessUnit_PostData_Data = await BussinessUnitModel.create(
       Business_PostData_Data

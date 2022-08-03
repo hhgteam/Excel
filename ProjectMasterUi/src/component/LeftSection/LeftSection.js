@@ -54,10 +54,10 @@ function LeftSection() {
             </a>
           </li>
           <li>
-            <a href="project-clients.html">
+            <Link to="/Client">
               <i className="fa fa-user" />
               <span>Clients</span>
-            </a>
+            </Link>
           </li>
           <li>
             <a href="project-todo.html">

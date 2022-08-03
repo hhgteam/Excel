@@ -14,15 +14,15 @@ const businessUnit = new mongoose.Schema({
     type: String,
   },
   CreateDate: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    // default: Date.now,
   },
   ModifiedBy: {
     type: String,
   },
   ModifiedDate: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    // default: Date.now,
   },
 });
 
