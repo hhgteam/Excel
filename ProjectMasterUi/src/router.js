@@ -6,6 +6,7 @@ import Login from "./component/Login/Login";
 import Register from "./component/Register/Register";
 import Project from "./component/ProjectList/Project";
 import Ticketlist from "./component/TIcketList/Ticketlist";
+import Client from "./component/Client/Client";
 
 export default [
   {
@@ -47,6 +48,12 @@ export default [
     path:'/Ticket-List',
     element:() => <Ticketlist/>,
     exact:true,
+  },
+  {
+    path:'/Client',
+    element:() => <Client/>,
+    exact:true,
   }
+  
 ]
 
