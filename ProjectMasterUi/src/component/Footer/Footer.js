@@ -1,32 +1,33 @@
-import React from 'react'
+import React from "react";
 
 function Footer() {
   return (
-    <div>
-        <div className="section-body">
-
-        <footer className="footer">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-6 col-sm-12">
-                <a href="#">Project Managerial</a>
-              </div>
-              <div className="col-md-6 col-sm-12 text-md-right">
-                <ul className="list-inline mb-0">
-                  <li className="list-inline-item">
-                    <a href="#">Documentation</a>
-                  </li>
-                  <li className="list-inline-item">
-                    <a href="#">FAQ</a>
-                  </li>
-                </ul>
+    <>
+      <div className="page">
+        <div class="section-body">
+          <footer class="footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <a href="javascript:void(0)">Project Managerial</a>
+                </div>
+                <div class="col-md-6 col-sm-12 text-md-right">
+                  <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                      <a href="javascript:void(0)">Documentation</a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="javascript:void(0)">FAQ</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-           </div>
-        </footer>
+          </footer>
         </div>
-    </div>
-  )
+      </div>
+    </>
+  );
 }
 
-export default Footer
+export default Footer;
