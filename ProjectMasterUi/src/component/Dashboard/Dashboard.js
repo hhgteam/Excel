@@ -18,12 +18,12 @@ function Dashboard() {
     <div id="header_top" className="header_top">
       <div className="container">
         <div className="hleft">
-          <a className="header-brand" href="#">
+          <a className="header-brand" href="/">
             <img className="img-fluid" src="assets/images/HHGlogo.png" />
             {/* <i class="fa fa-soccer-ball-o brand-logo"></i> */}
           </a>
           <div className="dropdown">
-            <a href="#" className="nav-link user_btn">
+            <a href="/" className="nav-link user_btn">
               <img
                 className="avatar"
                 src="assets/images/user.png"
@@ -55,7 +55,7 @@ function Dashboard() {
               <i className="fa fa-folder-o" />
             </a>
             <a
-              href="#"
+              href="/"
               className="nav-link icon theme_btn xs-hide"
             >
               <i
@@ -69,7 +69,7 @@ function Dashboard() {
         </div>
         <div className="hright">
           <div className="dropdown">
-            <a href="#" className="nav-link icon settingbar">
+            <a href="/" className="nav-link icon settingbar">
               <i
                 className="fa fa-gear fa-spin"
                 data-toggle="tooltip"
@@ -77,7 +77,7 @@ function Dashboard() {
                 title="Settings"
               />
             </a>
-            <a href="#" className="nav-link icon menu_toggle">
+            <a href="/" className="nav-link icon menu_toggle">
               <i className="fa  fa-align-left" />
             </a>
           </div>
@@ -85,7 +85,7 @@ function Dashboard() {
       </div>
     </div>
     <div id="rightsidebar" className="right_sidebar">
-      <a href="#" className="p-3 settingbar float-right">
+      <a href="/" className="p-3 settingbar float-right">
         <i className="fa fa-close" />
       </a>
       <div className="p-4">
@@ -374,7 +374,7 @@ function Dashboard() {
     <div className="user_div">
       <h5 className="brand-name mb-4">
         HHG
-        <a href="#" className="user_btn">
+        <a href="/" className="user_btn">
           <i className="icon-logout" />
         </a>
       </h5>
@@ -485,7 +485,7 @@ function Dashboard() {
             <div className="time">2:00pm</div>
             <div className="desc">
               <h3>Responded to need</h3>
-              <a href="#">“In-Kind Opportunity”</a>
+              <a href="/">“In-Kind Opportunity”</a>
             </div>
           </li>
           <li>
@@ -509,7 +509,7 @@ function Dashboard() {
     {/* <div id="left-sidebar" className="sidebar ">
       <h5 className="brand-name">
         HHG{" "}
-        <a href="#" className="menu_option float-right">
+        <a href="/" className="menu_option float-right">
           <i
             className="fa fa-bars"
             data-toggle="tooltip"
@@ -601,7 +601,7 @@ function Dashboard() {
             </a>
           </li>
           <li>
-            <a href="#" className="has-arrow arrow-c">
+            <a href="/" className="has-arrow arrow-c">
               <i className="fa fa-lock" />
               <span>Authentication</span>
             </a>
@@ -625,13 +625,13 @@ function Dashboard() {
           </li>
           <li className="g_heading">Support</li>
           <li>
-            <a href="#">
+            <a href="/">
               <i className="fa fa-support" />
               <span>Need Help?</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/">
               <i className="fa fa-tag" />
               <span>ContactUs</span>
             </a>
@@ -644,7 +644,7 @@ function Dashboard() {
         <div className="container-fluid">
           <div className="page-header">
             <div className="left">
-              <a href="#" className="icon menu_toggle mr-3">
+              <a href="/" className="icon menu_toggle mr-3">
                 <i className="fa  fa-align-left" />
               </a>
               <h1 className="page-title">Dashboard</h1>
@@ -664,11 +664,11 @@ function Dashboard() {
                       <div class="dropdown d-flex">
                           <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2" data-toggle="dropdown"><i class="fa fa-language"></i></a>
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                              <a class="dropdown-item" href="#"><img class="w20 mr-2" src="assets/images/flags/us.svg">English</a>
+                              <a class="dropdown-item" href="/"><img class="w20 mr-2" src="assets/images/flags/us.svg">English</a>
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#"><img class="w20 mr-2" src="assets/images/flags/es.svg">Spanish</a>
-                              <a class="dropdown-item" href="#"><img class="w20 mr-2" src="assets/images/flags/jp.svg">japanese</a>
-                              <a class="dropdown-item" href="#"><img class="w20 mr-2" src="assets/images/flags/bl.svg">France</a>
+                              <a class="dropdown-item" href="/"><img class="w20 mr-2" src="assets/images/flags/es.svg">Spanish</a>
+                              <a class="dropdown-item" href="/"><img class="w20 mr-2" src="assets/images/flags/jp.svg">japanese</a>
+                              <a class="dropdown-item" href="/"><img class="w20 mr-2" src="assets/images/flags/bl.svg">France</a>
                           </div>
                       </div>
                       <div class="dropdown d-flex">
@@ -676,7 +676,7 @@ function Dashboard() {
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                               <ul class="right_chat list-unstyled w350 p-0">
                                   <li class="online">
-                                      <a href="#;" class="media">
+                                      <a href="/;" class="media">
                                           <img class="media-object" src="assets/images/xs/avatar4.jpg" alt="">
                                           <div class="media-body">
                                               <span class="name">Donald Gardner</span>
@@ -687,7 +687,7 @@ function Dashboard() {
                                       </a>
                                   </li>
                                   <li class="online">
-                                      <a href="#;" class="media">
+                                      <a href="/;" class="media">
                                           <img class="media-object " src="assets/images/xs/avatar5.jpg" alt="">
                                           <div class="media-body">
                                               <span class="name">Wendy Keen</span>
@@ -698,7 +698,7 @@ function Dashboard() {
                                       </a>                            
                                   </li>
                                   <li class="offline">
-                                      <a href="#;" class="media">
+                                      <a href="/;" class="media">
                                           <img class="media-object " src="assets/images/xs/avatar2.jpg" alt="">
                                           <div class="media-body">
                                               <span class="name">Matt Rosales</span>
@@ -709,7 +709,7 @@ function Dashboard() {
                                       </a>                            
                                   </li>
                                   <li class="online">
-                                      <a href="#;" class="media">
+                                      <a href="/;" class="media">
                                           <img class="media-object " src="assets/images/xs/avatar3.jpg" alt="">
                                           <div class="media-body">
                                               <span class="name">Phillip Smith</span>
@@ -721,7 +721,7 @@ function Dashboard() {
                                   </li>                        
                               </ul>
                               <div class="dropdown-divider"></div>
-                              <a href="#" class="dropdown-item text-center text-muted-dark readall">Mark all as read</a>
+                              <a href="/" class="dropdown-item text-center text-muted-dark readall">Mark all as read</a>
                           </div>
                       </div>
                       <div class="dropdown d-flex">
@@ -765,7 +765,7 @@ function Dashboard() {
                                   </li>                                   
                               </ul>
                               <div class="dropdown-divider"></div>
-                              <a href="#" class="dropdown-item text-center text-muted-dark readall">Mark all as read</a>
+                              <a href="/" class="dropdown-item text-center text-muted-dark readall">Mark all as read</a>
                           </div>
                       </div>
                       <div class="dropdown d-flex">
@@ -773,10 +773,10 @@ function Dashboard() {
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                               <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fe fe-user"></i> Profile</a>
                               <a class="dropdown-item" href="app-setting.html"><i class="dropdown-icon fe fe-settings"></i> Settings</a>
-                              <a class="dropdown-item" href="#"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="dropdown-icon fe fe-mail"></i> Inbox</a>
-                              <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-send"></i> Message</a>
+                              <a class="dropdown-item" href="/"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="dropdown-icon fe fe-mail"></i> Inbox</a>
+                              <a class="dropdown-item" href="/"><i class="dropdown-icon fe fe-send"></i> Message</a>
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-help-circle"></i> Need help?</a>
+                              <a class="dropdown-item" href="/"><i class="dropdown-icon fe fe-help-circle"></i> Need help?</a>
                               <a class="dropdown-item" href="login.html"><i class="dropdown-icon fe fe-log-out"></i> Sign out</a>
                           </div>
                       </div>
@@ -793,7 +793,7 @@ function Dashboard() {
                 <h4>Welcome Peter Richards!</h4>
                 <small>
                   Measure How Fast You’re Growing Monthly Recurring Revenue.{" "}
-                  <a href="#">Learn More</a>
+                  <a href="/">Learn More</a>
                 </small>
               </div>
             </div>
@@ -807,7 +807,7 @@ function Dashboard() {
                 <div className="card-body">
                   <h5 className="number mb-0 font-32 counter">31</h5>
                   <span className="font-12">
-                    Measure How Fast... <a href="#">More</a>
+                    Measure How Fast... <a href="/">More</a>
                   </span>
                 </div>
               </div>
@@ -820,7 +820,7 @@ function Dashboard() {
                 <div className="card-body">
                   <h5 className="number mb-0 font-32 counter">245</h5>
                   <span className="font-12">
-                    Measure How Fast... <a href="#">More</a>
+                    Measure How Fast... <a href="/">More</a>
                   </span>
                 </div>
               </div>
@@ -833,7 +833,7 @@ function Dashboard() {
                 <div className="card-body">
                   <h5 className="number mb-0 font-32 counter">17</h5>
                   <span className="font-12">
-                    Measure How Fast... <a href="#">More</a>
+                    Measure How Fast... <a href="/">More</a>
                   </span>
                 </div>
               </div>
@@ -846,7 +846,7 @@ function Dashboard() {
                 <div className="card-body">
                   <h5 className="number mb-0 font-32 counter">12</h5>
                   <span className="font-12">
-                    Measure How Fast... <a href="#">More</a>
+                    Measure How Fast... <a href="/">More</a>
                   </span>
                 </div>
               </div>
@@ -859,7 +859,7 @@ function Dashboard() {
                 <div className="card-body">
                   <h5 className="number mb-0 font-32 counter">19</h5>
                   <span className="font-12">
-                    Measure How Fast... <a href="#">More</a>
+                    Measure How Fast... <a href="/">More</a>
                   </span>
                 </div>
               </div>
@@ -872,7 +872,7 @@ function Dashboard() {
                 <div className="card-body">
                   <h5 className="number mb-0 font-32 counter">284</h5>
                   <span className="font-12">
-                    Measure How Fast... <a href="#">More</a>
+                    Measure How Fast... <a href="/">More</a>
                   </span>
                 </div>
               </div>
@@ -926,9 +926,9 @@ function Dashboard() {
                 <div className="card-header">
                   <h3 className="card-title">Current Projects Status</h3>
                   {/* <div class="card-options">
-                              <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-                              <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize"></i></a>
-                              <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+                              <a href="/" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+                              <a href="/" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize"></i></a>
+                              <a href="/" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
                           </div> */}
                 </div>
                 <div className="card-body">
@@ -1083,9 +1083,9 @@ function Dashboard() {
                 <div className="card-header">
                   <h3 className="card-title">Project Statistics</h3>
                   {/* <div class="card-options">
-                              <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fa fa-chevron-up"></i></a>
-                              <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fa fa-maximize"></i></a>
-                              <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-x"></i></a>
+                              <a href="/" class="card-options-collapse" data-toggle="card-collapse"><i class="fa fa-chevron-up"></i></a>
+                              <a href="/" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fa fa-maximize"></i></a>
+                              <a href="/" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-x"></i></a>
                           </div> */}
                 </div>
                 <div className="card-body">
@@ -1241,18 +1241,18 @@ function Dashboard() {
                 <div className="card-header">
                   <h3 className="card-title">Transaction History</h3>
                   {/* <div class="card-options">
-                              <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+                              <a href="/" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
                               <div class="item-action dropdown ml-2">
-                                  <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="fe fe-more-vertical"></i></a>
+                                  <a href="/" data-toggle="dropdown" aria-expanded="false"><i class="fe fe-more-vertical"></i></a>
                                   <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; transform: translate3d(-174px, 25px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
                                       <div class="dropdown-divider"></div>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
                                   </div>
                               </div>
                           </div> */}
@@ -1269,7 +1269,7 @@ function Dashboard() {
                       </td>
                       <td>
                         <p className="mb-0 d-flex justify-content-between">
-                          <span>Payment from #2583</span> <strong>$300</strong>
+                          <span>Payment from /2583</span> <strong>$300</strong>
                         </p>
                         <span className="text-muted font-13">Feb 21, 2019</span>
                       </td>
@@ -1284,7 +1284,7 @@ function Dashboard() {
                       </td>
                       <td>
                         <p className="mb-0 d-flex justify-content-between">
-                          <span>Payment from #1245</span> <strong>$1200</strong>
+                          <span>Payment from /1245</span> <strong>$1200</strong>
                         </p>
                         <span className="text-muted font-13">
                           March 14, 2019
@@ -1301,7 +1301,7 @@ function Dashboard() {
                       </td>
                       <td>
                         <p className="mb-0 d-flex justify-content-between">
-                          <span>Payment from #8596</span> <strong>$780</strong>
+                          <span>Payment from /8596</span> <strong>$780</strong>
                         </p>
                         <span className="text-muted font-13">
                           March 18, 2019
@@ -1318,7 +1318,7 @@ function Dashboard() {
                       </td>
                       <td>
                         <p className="mb-0 d-flex justify-content-between">
-                          <span>Payment from #1526</span> <strong>$841</strong>
+                          <span>Payment from /1526</span> <strong>$841</strong>
                         </p>
                         <span className="text-muted font-13">
                           April 27, 2019
@@ -1335,7 +1335,7 @@ function Dashboard() {
                       </td>
                       <td>
                         <p className="mb-0 d-flex justify-content-between">
-                          <span>Payment from #4859</span> <strong>$235</strong>
+                          <span>Payment from /4859</span> <strong>$235</strong>
                         </p>
                         <span className="text-muted font-13">
                           March 18, 2019
@@ -1351,18 +1351,18 @@ function Dashboard() {
                 <div className="card-header">
                   <h3 className="card-title">Customer Satisfaction</h3>
                   {/* <div class="card-options">
-                              <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+                              <a href="/" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
                               <div class="item-action dropdown ml-2">
-                                  <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="fe fe-more-vertical"></i></a>
+                                  <a href="/" data-toggle="dropdown" aria-expanded="false"><i class="fe fe-more-vertical"></i></a>
                                   <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; transform: translate3d(-174px, 25px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
                                       <div class="dropdown-divider"></div>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
                                   </div>
                               </div>
                           </div> */}
@@ -1468,18 +1468,18 @@ function Dashboard() {
                 <div className="card-header">
                   <h3 className="card-title">Overall Rating</h3>
                   {/* <div class="card-options">
-                              <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+                              <a href="/" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
                               <div class="item-action dropdown ml-2">
-                                  <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="fe fe-more-vertical"></i></a>
+                                  <a href="/" data-toggle="dropdown" aria-expanded="false"><i class="fe fe-more-vertical"></i></a>
                                   <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; transform: translate3d(-174px, 25px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
                                       <div class="dropdown-divider"></div>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
-                                      <a href="#" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
+                                      <a href="/" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
                                   </div>
                               </div>
                           </div> */}
@@ -1589,7 +1589,7 @@ function Dashboard() {
                     <table className="table table-hover table-striped text-nowrap table-vcenter mb-0">
                       <thead>
                         <tr>
-                          <th>#</th>
+                          <th>/</th>
                           <th>Client Name</th>
                           <th>Team</th>
                           <th>Project</th>
@@ -1600,7 +1600,7 @@ function Dashboard() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>#AD1245</td>
+                          <td>/AD1245</td>
                           <td>Sean Black</td>
                           <td>
                             <ul className="list-unstyled team-info sm margin-0 w150">
@@ -1641,7 +1641,7 @@ function Dashboard() {
                           </td>
                         </tr>
                         <tr>
-                          <td>#DF1937</td>
+                          <td>/DF1937</td>
                           <td>Sean Black</td>
                           <td>
                             <ul className="list-unstyled team-info sm margin-0 w150">
@@ -1682,7 +1682,7 @@ function Dashboard() {
                           </td>
                         </tr>
                         <tr>
-                          <td>#YU8585</td>
+                          <td>/YU8585</td>
                           <td>Merri Diamond</td>
                           <td>
                             <ul className="list-unstyled team-info sm margin-0 w150">
@@ -1708,7 +1708,7 @@ function Dashboard() {
                           </td>
                         </tr>
                         <tr>
-                          <td>#AD1245</td>
+                          <td>/AD1245</td>
                           <td>Sean Black</td>
                           <td>
                             <ul className="list-unstyled team-info sm margin-0 w150">
@@ -1746,7 +1746,7 @@ function Dashboard() {
                           </td>
                         </tr>
                         <tr>
-                          <td>#GH8596</td>
+                          <td>/GH8596</td>
                           <td>Allen Collins</td>
                           <td>
                             <ul className="list-unstyled team-info sm margin-0 w150">
@@ -1800,15 +1800,15 @@ function Dashboard() {
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-6 col-sm-12">
-                <a href="#">Project Managerial</a>
+                <a href="/">Project Managerial</a>
               </div>
               <div className="col-md-6 col-sm-12 text-md-right">
                 <ul className="list-inline mb-0">
                   <li className="list-inline-item">
-                    <a href="#">Documentation</a>
+                    <a href="/">Documentation</a>
                   </li>
                   <li className="list-inline-item">
-                    <a href="#">FAQ</a>
+                    <a href="/">FAQ</a>
                   </li>
                 </ul>
               </div>
