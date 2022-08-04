@@ -9,11 +9,24 @@ var debug = require('debug')('projectmaster:server');
 var http = require('http');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/ProjectMaster',{}).then((res)=>{
+
+//local
+// mongoose.connect('mongodb://localhost:27017/ProjectMaster',{}).then((res)=>{
+//   console.log("Db Connected");
+// }).catch((error)=>{
+//   console.log(error + "error in db connection");
+// });
+
+
+
+//live
+mongoose.connect('mongodb+srv://HHG:HHG@cluster0.f2c5v.mongodb.net/ProjectMaster?retryWrites=true&w=majority',{}).then((res)=>{
   console.log("Db Connected");
 }).catch((error)=>{
   console.log(error + "error in db connection");
 });
+
+
 /**
  * Get port from environment and store in Express.
  */
