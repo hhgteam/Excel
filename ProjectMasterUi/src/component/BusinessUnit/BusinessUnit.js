@@ -5,7 +5,7 @@ import LeftSection from '../LeftSection/LeftSection';
 import { env } from '../../env'
 import axios from 'axios';
 
-function Client() {
+function BusinessUnit() {
     const [id, setId] = useState(0)
     const [Name, SetName] = useState('')
     const [CreateBy, SetCreateBy] = useState('')
@@ -161,7 +161,7 @@ function Client() {
                                 <a href="javascript:void(0)" className="icon menu_toggle mr-3">
                                     <i className="fa  fa-align-left" />
                                 </a>
-                                <h1 className="page-title">Clients</h1>
+                                <h1 className="page-title">BusinessUnit</h1>
                             </div>
                             <div className="right">
                                 <div className="input-icon xs-hide mr-4">
@@ -425,7 +425,7 @@ function Client() {
                                                         data-toggle="tab"
                                                         href="#list"
                                                     >
-                                                        <i className="fa fa-list-ul" /> Clients List
+                                                        <i className="fa fa-list-ul" /> BusinessUnit List
                                                     </a>
                                                 </li>
                                                 <li className="nav-item">
@@ -628,4 +628,4 @@ function Client() {
     )
 }
 
-export default Client;
+export default BusinessUnit;
