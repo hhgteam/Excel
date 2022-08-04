@@ -147,7 +147,7 @@ function FunctionalGroup() {
                               <a href="javascript:void(0)" className="icon menu_toggle mr-3">
                                   <i className="fa  fa-align-left" />
                               </a>
-                              <h1 className="page-title">Clients</h1>
+                              <h1 className="page-title">FunctionalGroup</h1>
                           </div>
                           <div className="right">
                               <div className="input-icon xs-hide mr-4">
@@ -411,7 +411,7 @@ function FunctionalGroup() {
                                                       data-toggle="tab"
                                                       href="#list"
                                                   >
-                                                      <i className="fa fa-list-ul" /> Clients List
+                                                      <i className="fa fa-list-ul" /> FunctionalGroup List
                                                   </a>
                                               </li>
                                               <li className="nav-item">
@@ -517,7 +517,7 @@ function FunctionalGroup() {
                                   <div className="col-sm-12">
                                       <div className="card">
                                           <div className="card-header">
-                                              <h3 className="card-title">Add Client</h3>
+                                              <h3 className="card-title">Add FunctionalGroup</h3>
                                               <div className="card-options ">
                                                   <a
                                                       href="#"

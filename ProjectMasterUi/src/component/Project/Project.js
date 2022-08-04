@@ -147,7 +147,7 @@ function Project() {
                             <a href="javascript:void(0)" className="icon menu_toggle mr-3">
                                 <i className="fa  fa-align-left" />
                             </a>
-                            <h1 className="page-title">Clients</h1>
+                            <h1 className="page-title">Project</h1>
                         </div>
                         <div className="right">
                             <div className="input-icon xs-hide mr-4">
@@ -411,7 +411,7 @@ function Project() {
                                                     data-toggle="tab"
                                                     href="#list"
                                                 >
-                                                    <i className="fa fa-list-ul" /> Clients List
+                                                    <i className="fa fa-list-ul" /> Project List
                                                 </a>
                                             </li>
                                             <li className="nav-item">
