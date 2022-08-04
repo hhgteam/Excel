@@ -4,9 +4,13 @@ import Dashboard from "./component/Dashboard/Dashboard";
 import ForgotPassword from "./component/ForgotPassword/ForgotPassword";
 import Login from "./component/Login/Login";
 import Register from "./component/Register/Register";
-import Project from "./component/ProjectList/Project";
+import ProjectList from "./component/ProjectList/ProjectList";
 import Ticketlist from "./component/TIcketList/Ticketlist";
 import Client from "./component/Client/Client";
+import FunctionalGroup from "./component/FunctionalGroup/FunctionalGroup";
+import Project from "./component/Project/Project";
+import RecourceDetail from "./component/RecourceDetail/RecourceDetail";
+import ProjectRecourceDetail from "./component/ProjectRecourceDetail/ProjectRecourceDetail";
 
 export default [
   {
@@ -40,8 +44,8 @@ export default [
     exact:true,
   },
   {
-    path:'/Project',
-    element:() => <Project/>,
+    path:'/ProjectList',
+    element:() => <ProjectList/>,
     exact:true,
   },
   {
@@ -53,7 +57,27 @@ export default [
     path:'/Client',
     element:() => <Client/>,
     exact:true,
-  }
+  },
+  {
+    path:'/FunctionalGroup',
+    element:() => <FunctionalGroup/>,
+    exact:true,
+  },
+  {
+    path:'/Project',
+    element:() => <Project/>,
+    exact:true,
+  },
+  {
+    path:'/RecourceDetail',
+    element:() => <RecourceDetail/>,
+    exact:true,
+  },
+  {
+    path:'/ProjectRecourceDetail',
+    element:() => <ProjectRecourceDetail/>,
+    exact:true,
+  },
   
 ]
 

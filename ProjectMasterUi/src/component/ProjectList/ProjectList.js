@@ -3,7 +3,7 @@ import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import LeftSection from '../LeftSection/LeftSection'
 
-function Project() {
+function ProjectList() {
   return (
     <>
       <LeftSection/>
@@ -1221,4 +1221,4 @@ function Project() {
   )
 }
 
-export default Project
+export default ProjectList;

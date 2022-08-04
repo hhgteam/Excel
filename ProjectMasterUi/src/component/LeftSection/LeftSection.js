@@ -56,7 +56,31 @@ function LeftSection() {
           <li>
             <Link to="/Client">
               <i className="fa fa-user" />
-              <span>Clients</span>
+              <span>BusinessUnit</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/FunctionalGroup">
+              <i className="fa fa-user" />
+              <span>FunctionalGroup</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/Project">
+              <i className="fa fa-user" />
+              <span>Project</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/RecourceDetail">
+              <i className="fa fa-user" />
+              <span>RecourceDetail</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/ProjectRecourceDetail">
+              <i className="fa fa-user" />
+              <span>ProjectReso...Detail</span>
             </Link>
           </li>
           <li>

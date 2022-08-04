@@ -13,13 +13,10 @@ function Client() {
     const [ModifiedBy, SetModifiedBy] = useState('')
     const [ModifiedDate, SetModifiedDate] = useState('')
     const [List, setList] = useState([]);
- 
-    const SubmitHandler = async (e) => {
     
-        if(id == 0)
-        {   
+    const SubmitHandler = async (e) => {
+        if (id == 0) {
             const data = {
-
                 Name: Name,
                 CreateBy: CreateBy,
                 CreateDate: CreateDate,
@@ -32,20 +29,20 @@ function Client() {
             } catch (error) {
                 console.log(error);
             }
+            SetName('');
+            SetCreateBy('');
+            SetCreateDate('');
+            SetModifiedBy('');
+            SetModifiedDate('');
         }
-        else
-        {
+        else{
             const data = {
-
-               
                 Name: Name,
                 CreateBy: CreateBy,
                 CreateDate: CreateDate,
                 ModifiedBy: ModifiedBy,
                 ModifiedDate: ModifiedDate,
             }
-
-            
             try {
                 const res = await axios.put(env.apiURL + `bussinessUnit/BusinessUnit_UpdateData/${id}`, data)
                 console.log(res);
@@ -55,19 +52,11 @@ function Client() {
                 console.log(error);
             }
         }
-        
-
-
     }
 
     function getdata() {
-
-        axios
-            .get(env.apiURL + `bussinessUnit/BusinessUnit_GetData`, {
-
-            })
+        axios.get(env.apiURL + `bussinessUnit/BusinessUnit_GetData`, {})
             .then(function (res) {
-                // console.log(res.data)
                 setList(res.data.data)
             })
             .catch(function (error) {
@@ -76,18 +65,14 @@ function Client() {
     }
 
     const deletehandler = async (id) => {
-        axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {
-
-        }).then((res) => {
-
+        axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
+        .then((res) => {
             getdata()
         })
     }
 
     const Edithandler = async (id) => {
-
-        axios.get(env.apiURL + `bussinessUnit/BusinessUnit_FindData/${id}`,
-            { method: 'GET' })
+        axios.get(env.apiURL + `bussinessUnit/BusinessUnit_FindData/${id}`,{ method: 'GET' })
             .then((result) => {
                 setId(id)
                 SetName(result.data.data.Name)
@@ -98,26 +83,18 @@ function Client() {
                 console.log(result);
 
             })
-            
     }
 
     useEffect(() => {
-
         getdata()
     }, [])
-
-
-
+    
     return (
         <>
             <Header />
             <LeftSection />
-
-
+            {/* Update PopUP [Model] */}
             <div className="page">
-
-
-
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -128,34 +105,34 @@ function Client() {
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form onSubmit={SubmitHandler}>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value={Name} onChange={(e) => {SetName(e.target.value)}}/>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={Name} onChange={(e) => { SetName(e.target.value) }} />
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">CreateBy</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={CreateBy} onChange={(e) => {SetCreateBy(e.target.value)}}/>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={CreateBy} onChange={(e) => { SetCreateBy(e.target.value) }} />
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">CreateDate</label>
-                                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={CreateDate} onChange={(e) => {SetCreateDate(e.target.value)}}/>
+                                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={CreateDate} onChange={(e) => { SetCreateDate(e.target.value) }} />
 
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">ModifiedBy</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={ModifiedBy} onChange={(e) => {SetModifiedBy(e.target.value)}}/>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={ModifiedBy} onChange={(e) => { SetModifiedBy(e.target.value) }} />
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">ModifiedDate</label>
-                                        <input type="date" class="form-control" id="exampleInputPassword1" value={ModifiedDate} onChange={(e) => {SetModifiedDate(e.target.value)}}/>
+                                        <input type="date" class="form-control" id="exampleInputPassword1" value={ModifiedDate} onChange={(e) => { SetModifiedDate(e.target.value) }} />
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type='submit'  class="btn btn-primary" onClick={()=>{SubmitHandler()}}>Save changes</button>
-                              
+                                {/* <button type='submit' class="btn btn-primary"></button> */}
+                                <input type='submit' class="btn btn-primary" value='Save changes'/>
                             </div>
                         </div>
                     </div>
@@ -559,7 +536,7 @@ function Client() {
                                                     </a>
                                                 </div>
                                             </div>
-                                            <form className="card-body">
+                                            <form className="card-body" onSubmit={SubmitHandler}>
                                                 <div className="row clearfix">
                                                     <div className="col-md-6 col-sm-12">
                                                         <div className="form-group">
@@ -589,13 +566,13 @@ function Client() {
                                                         </div>
                                                     </div>
                                                     {/* <div className="col-md-3 col-sm-12">
-                      <label>Gender</label>
-                      <select className="form-control show-tick">
-                        <option value="">-- Gender --</option>
-                        <option value={10}>Male</option>
-                        <option value={20}>Female</option>
-                      </select>
-                    </div> */}
+                                                        <label>Gender</label>
+                                                        <select className="form-control show-tick">
+                                                            <option value="">-- Gender --</option>
+                                                            <option value={10}>Male</option>
+                                                            <option value={20}>Female</option>
+                                                        </select>
+                                                    </div> */}
                                                     <div className="col-md-3 col-sm-12">
                                                         <div className="form-group">
                                                             <label>ModifiedBy</label>
@@ -610,9 +587,11 @@ function Client() {
                                                     </div>
 
                                                     <div className="col-sm-12 ">
-                                                        <button type="submit" className="btn btn-primary" onClick={()=>{SubmitHandler()}}>
+                                                        {/* <button type="submit" className="btn btn-primary" onClick={() => { SubmitHandler() }}>
                                                             Submit
-                                                        </button>
+                                                        </button> */}
+                                                        <input type='submit' class="btn btn-primary" value='Submit'/>
+
                                                         <button
                                                             type="submit"
                                                             className="btn btn-outline-secondary mx-2"
