@@ -52,6 +52,15 @@ function Client() {
                 console.log(error);
             }
         }
+
+        SetName('');
+        SetCreateBy('');
+        SetCreateDate('');
+        SetModifiedBy('');
+        SetModifiedDate('');
+
+
+
     }
 
     function getdata() {
@@ -130,9 +139,13 @@ function Client() {
                                 </form>
                             </div>
                             <div class="modal-footer">
+
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 {/* <button type='submit' class="btn btn-primary"></button> */}
                                 <input type='submit' class="btn btn-primary" value='Save changes'/>
+
+                                <button type='submit'  class="btn btn-primary" data-dismiss="modal" onClick={()=>{SubmitHandler()}}>Save changes</button>
+
                             </div>
                         </div>
                     </div>
