@@ -29,8 +29,9 @@ function BusinessUnit() {
                 ModifiedDate: ModifiedDate,
             }
             try {
-                const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
-                console.log(res);
+                // const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
+                const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitPostData}`
+                common.httpPost(postBussinssUnit,data)
             } catch (error) {
                 console.log(error);
             }
@@ -149,9 +150,6 @@ function BusinessUnit() {
                             <div class="modal-footer">
 
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                {/* <button type='submit' class="btn btn-primary"></button> */}
-                                <input type='submit' class="btn btn-primary" value='Save changes'/>
-
                                 <button type='submit'  class="btn btn-primary" data-dismiss="modal" onClick={()=>{SubmitHandler()}}>Save changes</button>
 
                             </div>

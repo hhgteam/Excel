@@ -6,10 +6,9 @@ const {apiURL} = config
 const urlConstant ={
 
     BusinessUnit:{
-        getBussinssUnitData : `${apiURL}bussinessUnit/BusinessUnit_GetData`
-        // getBussinssUnitData : `${apiURL}bussinessUnit/BusinessUnit_GetData`
-        // getBussinssUnitData : `${apiURL}bussinessUnit/BusinessUnit_GetData`
-        // getBussinssUnitData : `${apiURL}bussinessUnit/BusinessUnit_GetData`
+        getBussinssUnitData : `${apiURL}bussinessUnit/BusinessUnit_GetData`,
+        BusinessUnitPostData : `${apiURL}bussinessUnit/BusinessUnit_PostData`
+      
     }
 
 }
