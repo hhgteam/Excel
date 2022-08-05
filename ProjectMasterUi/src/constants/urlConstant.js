@@ -20,6 +20,14 @@ const urlConstant = {
     functionalFindData: `${apiURL}functionalgroup/FunctionalGroup_FindData`,
     functionalUpdateData: `${apiURL}functionalgroup/FunctionalGroup_UpdateData`,
   },
+  ProjectRecourceDetail:{
+    getProjectRecourceData: `${apiURL}projectresourcedetail/ProjectResourceDetail_GetData`,
+    ProjectRecourcePostData: `${apiURL}projectresourcedetail/ProjectResourceDetail_PostData`,
+    ProjectRecourceDeleteData: `${apiURL}projectresourcedetail/ProjectResourceDetail_DeleteData`,
+    ProjectRecourceFindData: `${apiURL}projectresourcedetail/ProjectResourceDetail_FindData`,
+    ProjectRecourceUpdateData: `${apiURL}projectresourcedetail/ProjectResourceDetail_UpdateData`,
+  },
+  
 };
 
 export { urlConstant as default };
