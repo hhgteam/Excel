@@ -15,6 +15,7 @@ function FunctionalGroup() {
   const [ModifiedBy, SetModifiedBy] = useState("");
   const [ModifiedDate, SetModifiedDate] = useState("");
   const [BussinessName, setBussinessName] = useState([]);
+  const [BussinessUnitId, setBussinessUnitId] = useState("");
   const [List, setList] = useState([]);
 
   let common = new CommonService();
@@ -27,6 +28,7 @@ function FunctionalGroup() {
         CreateDate: CreateDate,
         ModifiedBy: ModifiedBy,
         ModifiedDate: ModifiedDate,
+        BussinessUnitId: BussinessUnitId,
       };
       try {
         const postFunctionalGroup = `${urlConstant.functionlGroup.functionalPostData}`;
@@ -39,6 +41,7 @@ function FunctionalGroup() {
       SetCreateDate("");
       SetModifiedBy("");
       SetModifiedDate("");
+      setBussinessUnitId("");
     } else {
       debugger;
       const data = {
@@ -766,7 +769,13 @@ function FunctionalGroup() {
                           </div>
                           <div className="col-md-3 col-sm-12">
                             <label>Bussiness Name</label>
-                            <select className="form-control show-tick">
+                            <select
+                              value={BussinessUnitId}
+                              className="form-control show-tick"
+                              onChange={(e) => {
+                                setBussinessUnitId(e.target.value);
+                              }}
+                            >
                               {BussinessName.map((item, i) => {
                                 return (
                                   <>
