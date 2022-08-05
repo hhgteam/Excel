@@ -10,10 +10,10 @@ const urlConstant = {
     BusinessUnitDeleteData: `${apiURL}bussinessUnit/BusinessUnit_DeleteData`,
     BusinessUnitUpdateData: `${apiURL}bussinessUnit/BusinessUnit_UpdateData`,
     BusinessUnitFindData: `${apiURL}bussinessUnit/BusinessUnit_FindData`,
-
+    
   },
 
-  functionlGroup: {
+  functionalGroup: {
     getFunctionalData: `${apiURL}functionalgroup/FunctionalGroup_GetData`,
     functionalPostData: `${apiURL}functionalgroup/FunctionalGroup_PostData`,
     functionalDeleteData: `${apiURL}functionalgroup/FunctionalGroup_DeleteData`,

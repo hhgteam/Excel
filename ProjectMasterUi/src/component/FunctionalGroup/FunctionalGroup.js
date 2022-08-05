@@ -31,7 +31,7 @@ function FunctionalGroup() {
         BussinessUnitId: BussinessUnitId,
       };
       try {
-        const postFunctionalGroup = `${urlConstant.functionlGroup.functionalPostData}`;
+        const postFunctionalGroup = `${urlConstant.functionalGroup.functionalPostData}`;
         common.httpPost(postFunctionalGroup, data);
       } catch (error) {
         console.log(error);
@@ -74,7 +74,7 @@ function FunctionalGroup() {
   };
 
   function getdata() {
-    const getFunctionalGroup = `${urlConstant.functionlGroup.getFunctionalData}`;
+    const getFunctionalGroup = `${urlConstant.functionalGroup.getFunctionalData}`;
     common
       .httpGet(getFunctionalGroup)
       .then(function (res) {
@@ -113,7 +113,7 @@ function FunctionalGroup() {
     //   });
   }
   const deletehandler = async (id) => {
-    const deleteFunctionalGroup = `${urlConstant.functionlGroup.functionalDeleteData}/${id}`;
+    const deleteFunctionalGroup = `${urlConstant.functionalGroup.functionalDeleteData}/${id}`;
 
     common.httpGet(deleteFunctionalGroup).then((res) => {
       getdata();
@@ -122,7 +122,7 @@ function FunctionalGroup() {
 
   const Edithandler = async (id) => {
     // console.log(id);
-    const findFunctionalGroup = `${urlConstant.functionlGroup.functionalFindData}/${id}`;
+    const findFunctionalGroup = `${urlConstant.functionalGroup.functionalFindData}/${id}`;
     common.httpGet(findFunctionalGroup).then((result) => {
       setId(id);
       SetName(result.data.data.Name);
@@ -776,6 +776,11 @@ function FunctionalGroup() {
                                 setBussinessUnitId(e.target.value);
                               }}
                             >
+                              <option selected="true">
+                                ----------------------- Select B-id
+                                -----------------------
+                              </option>
+
                               {BussinessName.map((item, i) => {
                                 return (
                                   <>
