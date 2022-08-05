@@ -14,6 +14,7 @@ function FunctionalGroup() {
   const [CreateDate, SetCreateDate] = useState("");
   const [ModifiedBy, SetModifiedBy] = useState("");
   const [ModifiedDate, SetModifiedDate] = useState("");
+  const [BussinessName, setBussinessName] = useState([]);
   const [List, setList] = useState([]);
 
   let common = new CommonService();
@@ -88,7 +89,26 @@ function FunctionalGroup() {
     //     console.log(error);
     //   });
   }
-
+  function Bussinessgetdata() {
+    const getBussinssUnit = `${urlConstant.BusinessUnit.getBussinssUnitData}`;
+    common
+      .httpGet(getBussinssUnit)
+      .then(function (res) {
+        setBussinessName(res.data.data);
+        // console.log(res.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    // axios
+    //   .get(env.apiURL + `bussinessUnit/BusinessUnit_GetData`, {})
+    //   .then(function (res) {
+    //     setList(res.data.data);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+  }
   const deletehandler = async (id) => {
     const deleteFunctionalGroup = `${urlConstant.functionlGroup.functionalDeleteData}/${id}`;
 
@@ -113,6 +133,7 @@ function FunctionalGroup() {
 
   useEffect(() => {
     getdata();
+    Bussinessgetdata();
   }, []);
   return (
     <>
@@ -743,14 +764,18 @@ function FunctionalGroup() {
                               />
                             </div> */}
                           </div>
-                          {/* <div className="col-md-3 col-sm-12">
-                                                      <label>Gender</label>
-                                                      <select className="form-control show-tick">
-                                                          <option value="">-- Gender --</option>
-                                                          <option value={10}>Male</option>
-                                                          <option value={20}>Female</option>
-                                                      </select>
-                                                  </div> */}
+                          <div className="col-md-3 col-sm-12">
+                            <label>Bussiness Name</label>
+                            <select className="form-control show-tick">
+                              {BussinessName.map((item, i) => {
+                                return (
+                                  <>
+                                    <option>{item.Name}</option>
+                                  </>
+                                );
+                              })}
+                            </select>
+                          </div>
                           <div className="col-md-3 col-sm-12">
                             <div className="form-group">
                               <label>ModifiedBy</label>
