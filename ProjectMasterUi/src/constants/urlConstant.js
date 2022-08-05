@@ -7,8 +7,10 @@ const urlConstant = {
   BusinessUnit: {
     getBussinssUnitData: `${apiURL}bussinessUnit/BusinessUnit_GetData`,
     BusinessUnitPostData: `${apiURL}bussinessUnit/BusinessUnit_PostData`,
-    // BusinessUnitDeleteData: `${apiURL}bussinessUnit/BusinessUnit_DeleteData`,
-    // BusinessUnitUpdateData: `${apiURL}bussinessUnit/BusinessUnit_UpdateData`,
+    BusinessUnitDeleteData: `${apiURL}bussinessUnit/BusinessUnit_DeleteData`,
+    BusinessUnitUpdateData: `${apiURL}bussinessUnit/BusinessUnit_UpdateData`,
+    BusinessUnitFindData: `${apiURL}bussinessUnit/BusinessUnit_FindData`,
+
   },
 
   functionlGroup: {

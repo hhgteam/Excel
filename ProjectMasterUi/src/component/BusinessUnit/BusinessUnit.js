@@ -50,9 +50,12 @@ function BusinessUnit() {
                 ModifiedDate: ModifiedDate,
             }
             try {
-                const res = await axios.put(env.apiURL + `bussinessUnit/BusinessUnit_UpdateData/${id}`, data)
-                console.log(res);
-                getdata()
+                const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitUpdateData}/${id}`
+                common.httpPost(postBussinssUnit,data).then((res)=>{
+                BussinssUnitgetdata()
+                })
+                // const res = await axios.post(env.apiURL + `bussinessUnit/BusinessUnit_UpdateData/${id}`, data)
+                // console.log(res);
                 setId(0)
             } catch (error) {
                 console.log(error);
@@ -69,8 +72,8 @@ function BusinessUnit() {
 
     }
 
-    function getdata() {
-        // axios.get(env.apiURL + `bussinessUnit/BusinessUnit_GetData`, {})
+    function BussinssUnitgetdata() {
+        // axios.get(env.apiURL + `bussinessUnit/BusinessUnit_BussinssUnitgetdata`, {})
         const getBussinssUnit = `${urlConstant.BusinessUnit.getBussinssUnitData}`
         common.httpGet(getBussinssUnit)
             .then(function (res) {
@@ -83,14 +86,19 @@ function BusinessUnit() {
     }
 
     const deletehandler = async (id) => {
-        axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
-        .then((res) => {
-            getdata()
-        })
+        const deleteBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitDeleteData}/${id}`
+                common.httpGet(deleteBussinssUnit).then((res)=>{
+                BussinssUnitgetdata()
+                })
+        // axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
+        // .then((res) => {
+        //     BussinssUnitgetdata()
+        // })
     }
 
     const Edithandler = async (id) => {
-        axios.get(env.apiURL + `bussinessUnit/BusinessUnit_FindData/${id}`,{ method: 'GET' })
+        const getBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitFindData}/${id}`
+        common.httpGet(getBussinssUnit)
             .then((result) => {
                 setId(id)
                 SetName(result.data.data.Name)
@@ -104,7 +112,7 @@ function BusinessUnit() {
     }
 
     useEffect(() => {
-        getdata()
+        BussinssUnitgetdata()
     }, [])
     
     return (
