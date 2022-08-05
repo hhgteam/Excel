@@ -101,7 +101,7 @@ exports.BusinessUnit_FindData = async function (req, res, next) {
 
 
 exports.BusinessUnit_UpdateData = async function (req, res, next) {
-
+console.log(req)
   try {
     const Business_FindById_Data = await BussinessUnitModel.findById(req.params.id);
       Business_FindById_Data.Name = req.body.Name;
