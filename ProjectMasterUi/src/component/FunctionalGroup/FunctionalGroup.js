@@ -39,6 +39,7 @@ function FunctionalGroup() {
       SetModifiedBy("");
       SetModifiedDate("");
     } else {
+      debugger;
       const data = {
         Name: Name,
         CreateBy: CreateBy,
@@ -47,16 +48,24 @@ function FunctionalGroup() {
         ModifiedDate: ModifiedDate,
       };
       try {
-        const res = await axios.put(
-          env.apiURL + `bussinessUnit/BusinessUnit_UpdateData/${id}`,
+        //     const updateFunctionalGroup = `${urlConstant.functionlGroup.functionalUpdateData}/${id}`;
+        //     common.httpPost(updateFunctionalGroup, data);
+        debugger;
+        await axios.post(
+          env.apiURL + `functionalgroup/FunctionalGroup_UpdateData/${id}`,
           data
         );
-        console.log(res);
+
         getdata();
         setId(0);
       } catch (error) {
         console.log(error);
       }
+      SetName("");
+      SetCreateBy("");
+      SetCreateDate("");
+      SetModifiedBy("");
+      SetModifiedDate("");
     }
   };
 
@@ -70,38 +79,36 @@ function FunctionalGroup() {
       .catch(function (error) {
         console.log(error);
       });
-    axios
-      .get(env.apiURL + `bussinessUnit/BusinessUnit_GetData`, {})
-      .then(function (res) {
-        setList(res.data.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios
+    //   .get(env.apiURL + `bussinessUnit/BusinessUnit_GetData`, {})
+    //   .then(function (res) {
+    //     setList(res.data.data);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   }
 
   const deletehandler = async (id) => {
-    axios
-      .delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
-      .then((res) => {
-        getdata();
-      });
+    const deleteFunctionalGroup = `${urlConstant.functionlGroup.functionalDeleteData}/${id}`;
+
+    common.httpGet(deleteFunctionalGroup).then((res) => {
+      getdata();
+    });
   };
 
   const Edithandler = async (id) => {
-    axios
-      .get(env.apiURL + `bussinessUnit/BusinessUnit_FindData/${id}`, {
-        method: "GET",
-      })
-      .then((result) => {
-        setId(id);
-        SetName(result.data.data.Name);
-        SetCreateBy(result.data.data.CreateBy);
-        SetCreateDate(result.data.data.CreateDate);
-        SetModifiedBy(result.data.data.ModifiedBy);
-        SetModifiedDate(result.data.data.ModifiedDate);
-        console.log(result);
-      });
+    // console.log(id);
+    const findFunctionalGroup = `${urlConstant.functionlGroup.functionalFindData}/${id}`;
+    common.httpGet(findFunctionalGroup).then((result) => {
+      setId(id);
+      SetName(result.data.data.Name);
+      SetCreateBy(result.data.data.CreateBy);
+      SetCreateDate(result.data.data.CreateDate);
+      SetModifiedBy(result.data.data.ModifiedBy);
+      SetModifiedDate(result.data.data.ModifiedDate);
+      console.log(result);
+    });
   };
 
   useEffect(() => {
@@ -168,7 +175,7 @@ function FunctionalGroup() {
                       }}
                     />
                   </div>
-                  <div class="mb-3">
+                  {/* <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">
                       CreateDate
                     </label>
@@ -182,7 +189,7 @@ function FunctionalGroup() {
                         SetCreateDate(e.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">
                       ModifiedBy
@@ -198,7 +205,7 @@ function FunctionalGroup() {
                       }}
                     />
                   </div>
-                  <div class="mb-3">
+                  {/* <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                       ModifiedDate
                     </label>
@@ -211,7 +218,7 @@ function FunctionalGroup() {
                         SetModifiedDate(e.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
                 </form>
               </div>
               <div class="modal-footer">
@@ -227,6 +234,10 @@ function FunctionalGroup() {
                   type="submit"
                   class="btn btn-primary"
                   value="Save changes"
+                  onClick={() => {
+                    SubmitHandler();
+                  }}
+                  data-dismiss="modal"
                 />
               </div>
             </div>
@@ -610,7 +621,7 @@ function FunctionalGroup() {
                             {List.map((item, i) => {
                               return (
                                 <>
-                                  <tr>
+                                  <tr key="hrll">
                                     <td>{i + 1}</td>
                                     <td>{item.Name}</td>
                                     <td>{item.CreateBy}</td>
@@ -717,7 +728,7 @@ function FunctionalGroup() {
                             </div>
                           </div>
                           <div className="col-md-3 col-sm-12">
-                            <div className="form-group">
+                            {/* <div className="form-group">
                               <label>CreateDate</label>
                               <input
                                 data-provide="datepicker"
@@ -730,7 +741,7 @@ function FunctionalGroup() {
                                   SetCreateDate(e.target.value);
                                 }}
                               />
-                            </div>
+                            </div> */}
                           </div>
                           {/* <div className="col-md-3 col-sm-12">
                                                       <label>Gender</label>
@@ -754,7 +765,7 @@ function FunctionalGroup() {
                             </div>
                           </div>
                           <div className="col-md-3 col-sm-12">
-                            <div className="form-group">
+                            {/* <div className="form-group">
                               <label>ModifiedDate</label>
                               <input
                                 type="date"
@@ -764,7 +775,7 @@ function FunctionalGroup() {
                                   SetModifiedDate(e.target.value);
                                 }}
                               />
-                            </div>
+                            </div> */}
                           </div>
 
                           <div className="col-sm-12 ">

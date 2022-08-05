@@ -14,6 +14,9 @@ const urlConstant = {
   functionlGroup: {
     getFunctionalData: `${apiURL}functionalgroup/FunctionalGroup_GetData`,
     functionalPostData: `${apiURL}functionalgroup/FunctionalGroup_PostData`,
+    functionalDeleteData: `${apiURL}functionalgroup/FunctionalGroup_DeleteData`,
+    functionalFindData: `${apiURL}functionalgroup/FunctionalGroup_FindData`,
+    functionalUpdateData: `${apiURL}functionalgroup/FunctionalGroup_UpdateData`,
   },
 };
 
