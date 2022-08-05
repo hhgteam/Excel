@@ -5,13 +5,16 @@ import axios from 'axios';
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use(async (config) => {
     //let userData = await AsyncStorage.getItem('loginUser');
-    const userData = localStorageService.getAccessToken();
-    if (userData) {
-        const objuserDetail = JSON.parse(userData)
-        if (objuserDetail) {
-            config.headers['Authorization'] = 'Bearer ' + objuserDetail.access_token
-        }
-    }
+    
+    
+    // const userData = localStorageService.getAccessToken();
+    const userData = {};
+    // if (userData) {
+    //     const objuserDetail = JSON.parse(userData)
+    //     if (objuserDetail) {
+    //         config.headers['Authorization'] = 'Bearer ' + objuserDetail.access_token
+    //     }
+    // }
     return config;
 }, (error) => {
     // Do something with request error 

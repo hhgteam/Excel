@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import LeftSection from '../LeftSection/LeftSection';
+import  CommonService from '../../services/commonService';
 import { env } from '../../env'
 import axios from 'axios';
+import urlConstant from '../../constants/urlConstant';
 
 function BusinessUnit() {
     const [id, setId] = useState(0)
@@ -13,10 +15,13 @@ function BusinessUnit() {
     const [ModifiedBy, SetModifiedBy] = useState('')
     const [ModifiedDate, SetModifiedDate] = useState('')
     const [List, setList] = useState([]);
+
+    let common = new CommonService()
     
     const SubmitHandler = async (e) => {
         if (id == 0) {
             const data = {
+                
                 Name: Name,
                 CreateBy: CreateBy,
                 CreateDate: CreateDate,
@@ -64,13 +69,16 @@ function BusinessUnit() {
     }
 
     function getdata() {
-        axios.get(env.apiURL + `bussinessUnit/BusinessUnit_GetData`, {})
+        // axios.get(env.apiURL + `bussinessUnit/BusinessUnit_GetData`, {})
+        const getBussinssUnit = `${urlConstant.BusinessUnit.getBussinssUnitData}`
+        common.httpGet(getBussinssUnit)
             .then(function (res) {
                 setList(res.data.data)
             })
             .catch(function (error) {
                 console.log(error)
             })
+
     }
 
     const deletehandler = async (id) => {

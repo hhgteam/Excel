@@ -1,13 +1,12 @@
-import axiosInstance from './../common/Interceptor';
+import axiosInstance from '../common/Interceptor';
 //import axios from 'axios';
 
 class CommonService {
-    constructor() {
-    }
+   
 
     httpGet = async (requestURL, authorizationRequired) => new Promise((resolve, reject) => {
         // const userresponse = JSON.parse(localStorage.getItem('user'))
-        const userresponse = "";// JSON.parse(AsyncStorage.getItem('user'))
+        // const userresponse = "";// JSON.parse(AsyncStorage.getItem('user'))
 
         // const options = {
         //     method: 'get',
@@ -29,14 +28,14 @@ class CommonService {
         // const userresponse = JSON.parse(localStorage.getItem('user'))
         const userresponse = ""; // JSON.parse(AsyncStorage.getItem('user'))
 
-        // const options = {
-        //     method: 'post',
-        //     headers: {
-        //         'Content-Type': 'application/x-www-form-urlencoded',
-        //         'Accept': 'application/json, text/plain, */*'
-        //     },
-        //     body: JSON.stringify(requestBody)
-        // }
+        const options = {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json, text/plain, */*'
+            },
+            body: JSON.stringify(requestBody)
+        }
 
         if (authorizationRequired && userresponse) {
             // options.headers.Authorization = `CustomBasic ${userresponse.UserId} ${userresponse.Token}`
@@ -59,14 +58,14 @@ class CommonService {
         // const userresponse = JSON.parse(localStorage.getItem('user'))
         const userresponse = ""; // JSON.parse(AsyncStorage.getItem('user'))
 
-        // const options = {
-        //     method: 'post',
-        //     headers: {
-        //         'Content-Type': 'application/x-www-form-urlencoded',
-        //         'Accept': 'application/json, text/plain, */*'
-        //     },
-        //     body: JSON.stringify(requestBody)
-        // }
+        const options = {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json, text/plain, */*'
+            },
+            body: JSON.stringify(requestBody)
+        }
 
         if (authorizationRequired && userresponse) {
             // options.headers.Authorization = `CustomBasic ${userresponse.UserId} ${userresponse.Token}`
@@ -85,14 +84,15 @@ class CommonService {
 
     });
 
-    async checkInternetConnection() {
-        let data = await Network.getNetworkStateAsync();
-        if (data.isConnected == false || data.type == Network.NetworkStateType.NONE) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
+    
+    //  checkInternetConnection = async () => {
+    //     let data = await Network.getNetworkStateAsync();
+    //     if (data.isConnected == false || data.type == Network.NetworkStateType.NONE) {
+    //         return false;
+    //     }
+    //     else {
+    //         return true;
+    //     }
+    // }
 }
 export default CommonService

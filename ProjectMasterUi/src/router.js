@@ -6,7 +6,6 @@ import Login from "./component/Login/Login";
 import Register from "./component/Register/Register";
 import ProjectList from "./component/ProjectList/ProjectList";
 import Ticketlist from "./component/TIcketList/Ticketlist";
-import Client from "./component/BusinessUnit/BusinessUnit";
 import FunctionalGroup from "./component/FunctionalGroup/FunctionalGroup";
 import Project from "./component/Project/Project";
 import RecourceDetail from "./component/RecourceDetail/RecourceDetail";
