@@ -8,9 +8,9 @@ var api  = require('../controller/ProjectDetails/ProjectDetailsController');
 
 router.post("/ProjectDetails_PostData",  api.ProjectDetails_PostData);
 router.get("/ProjectDetails_GetData",  api.ProjectDetails_GetData);
-router.delete("/ProjectDetails_DeleteData/:id",  api.ProjectDetails_DeleteData);
+router.get("/ProjectDetails_DeleteData/:id",  api.ProjectDetails_DeleteData);
 router.get("/ProjectDetails_FindData/:id",  api.ProjectDetails_FindData);
-router.put("/ProjectDetails_UpdateData/:id",  api.ProjectDetails_UpdateData);
+router.post("/ProjectDetails_UpdateData/:id",  api.ProjectDetails_UpdateData);
 
 module.exports = router;
 

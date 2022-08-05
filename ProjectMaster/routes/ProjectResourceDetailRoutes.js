@@ -6,9 +6,9 @@ const auth = require("../middleware/auth");
 
 router.post("/ProjectResourceDetail_PostData",  api.ProjectResourceDetail_PostData);
 router.get("/ProjectResourceDetail_GetData",  api.ProjectResourceDetail_GetData);
-router.delete("/ProjectResourceDetail_DeleteData/:id",  api.ProjectResourceDetail_DeleteData);
+router.get("/ProjectResourceDetail_DeleteData/:id",  api.ProjectResourceDetail_DeleteData);
 router.get("/ProjectResourceDetail_FindData/:id",  api.ProjectResourceDetail_FindData);
-router.put("/ProjectResourceDetail_UpdateData/:id",  api.ProjectResourceDetail_UpdateData);
+router.post("/ProjectResourceDetail_UpdateData/:id",  api.ProjectResourceDetail_UpdateData);
 
 
 
