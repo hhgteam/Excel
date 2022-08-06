@@ -4,8 +4,11 @@ import Header from "../Header/Header";
 import LeftSection from "../LeftSection/LeftSection";
 import CommonService from "../../services/commonService";
 import urlConstant from "../../constants/urlConstant";
+import { ToasterSuccess, ToasterError } from "../../constants/toaster";
 import { env } from "../../env";
 import axios from "axios";
+import { ToastContainer } from "react-toastify";
+
 
 function FunctionalGroup() {
   const [id, setId] = useState(0);
@@ -21,6 +24,7 @@ function FunctionalGroup() {
   let common = new CommonService();
 
   const SubmitHandler = async (e) => {
+    
     if (id == 0) {
       const data = {
         Name: Name,
@@ -33,8 +37,9 @@ function FunctionalGroup() {
       try {
         const postFunctionalGroup = `${urlConstant.functionalGroup.functionalPostData}`;
         common.httpPost(postFunctionalGroup, data);
+        ToasterSuccess("Success...!!");
       } catch (error) {
-        console.log(error);
+        ToasterError("Error");
       }
       SetName("");
       SetCreateBy("");
@@ -52,18 +57,17 @@ function FunctionalGroup() {
         ModifiedDate: ModifiedDate,
       };
       try {
-        //     const updateFunctionalGroup = `${urlConstant.functionlGroup.functionalUpdateData}/${id}`;
-        //     common.httpPost(updateFunctionalGroup, data);
         debugger;
-        await axios.post(
-          env.apiURL + `functionalgroup/FunctionalGroup_UpdateData/${id}`,
-          data
-        );
 
-        getdata();
+        const updateFunctionalGroup = `${urlConstant.functionalGroup.functionalUpdateData}/${id}`;
+        common.httpPost(updateFunctionalGroup, data).then((res) => {
+          functionalGetData();
+        });
+
+        ToasterSuccess("Success...!!");
         setId(0);
       } catch (error) {
-        console.log(error);
+        ToasterError("Error");
       }
       SetName("");
       SetCreateBy("");
@@ -73,7 +77,7 @@ function FunctionalGroup() {
     }
   };
 
-  function getdata() {
+  function functionalGetData() {
     const getFunctionalGroup = `${urlConstant.functionalGroup.getFunctionalData}`;
     common
       .httpGet(getFunctionalGroup)
@@ -81,7 +85,7 @@ function FunctionalGroup() {
         setList(res.data.data);
       })
       .catch(function (error) {
-        console.log(error);
+        ToasterError("Error");
       });
     // axios
     //   .get(env.apiURL + `bussinessUnit/BusinessUnit_GetData`, {})
@@ -101,7 +105,7 @@ function FunctionalGroup() {
         // console.log(res.data.data);
       })
       .catch(function (error) {
-        console.log(error);
+        ToasterError("Error");
       });
     // axios
     //   .get(env.apiURL + `bussinessUnit/BusinessUnit_GetData`, {})
@@ -116,7 +120,10 @@ function FunctionalGroup() {
     const deleteFunctionalGroup = `${urlConstant.functionalGroup.functionalDeleteData}/${id}`;
 
     common.httpGet(deleteFunctionalGroup).then((res) => {
-      getdata();
+      functionalGetData();
+    });
+    ToasterSuccess("Success...!!").catch((error) => {
+      ToasterError("Error");
     });
   };
 
@@ -135,11 +142,12 @@ function FunctionalGroup() {
   };
 
   useEffect(() => {
-    getdata();
+    functionalGetData();
     Bussinessgetdata();
   }, []);
   return (
     <>
+      <ToastContainer />;
       <Header />
       <LeftSection />
       {/* Update PopUP [Model] */}
@@ -596,7 +604,7 @@ function FunctionalGroup() {
           </div>
         </div>
       </div>
-
+      
       <Footer />
     </>
   );

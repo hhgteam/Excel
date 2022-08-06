@@ -1,188 +1,475 @@
-import React, { useState, useEffect } from 'react'
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import LeftSection from '../LeftSection/LeftSection';
-import  CommonService from '../../services/commonService';
-import { env } from '../../env'
-import axios from 'axios';
-import urlConstant from '../../constants/urlConstant';
+import React, { useState, useEffect } from "react";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import LeftSection from "../LeftSection/LeftSection";
+import CommonService from "../../services/commonService";
+import { env } from "../../env";
+import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import { ToasterSuccess, ToasterError } from "../../constants/toaster";
+import urlConstant from "../../constants/urlConstant";
 
 function BusinessUnit() {
-    const [id, setId] = useState(0)
-    const [Name, SetName] = useState('')
-    const [CreateBy, SetCreateBy] = useState('')
-    const [CreateDate, SetCreateDate] = useState('')
-    const [ModifiedBy, SetModifiedBy] = useState('')
-    const [ModifiedDate, SetModifiedDate] = useState('')
-    const [List, setList] = useState([]);
+  const [id, setId] = useState(0);
+  const [Name, SetName] = useState("");
+  const [CreateBy, SetCreateBy] = useState("");
+  const [CreateDate, SetCreateDate] = useState("");
+  const [ModifiedBy, SetModifiedBy] = useState("");
+  const [ModifiedDate, SetModifiedDate] = useState("");
+  const [List, setList] = useState([]);
 
-    let common = new CommonService()
-    
-    const SubmitHandler = async (e) => {
-        if (id == 0) {
-            const data = {
-                
-                Name: Name,
-                CreateBy: CreateBy,
-                CreateDate: CreateDate,
-                ModifiedBy: ModifiedBy,
-                ModifiedDate: ModifiedDate,
-            }
-            try {
-                // const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
-                const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitPostData}`
-                common.httpPost(postBussinssUnit,data)
-            } catch (error) {
-                console.log(error);
-            }
-            SetName('');
-            SetCreateBy('');
-            SetCreateDate('');
-            SetModifiedBy('');
-            SetModifiedDate('');
-        }
-        else{
-            const data = {
-                Name: Name,
-                CreateBy: CreateBy,
-                CreateDate: CreateDate,
-                ModifiedBy: ModifiedBy,
-                ModifiedDate: ModifiedDate,
-            }
-            try {
-                const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitUpdateData}/${id}`
-                common.httpPost(postBussinssUnit,data).then((res)=>{
-                BussinssUnitgetdata()
-                })
-                // const res = await axios.post(env.apiURL + `bussinessUnit/BusinessUnit_UpdateData/${id}`, data)
-                // console.log(res);
-                setId(0)
-            } catch (error) {
-                console.log(error);
-            }
-        }
+  let common = new CommonService();
 
-        SetName('');
-        SetCreateBy('');
-        SetCreateDate('');
-        SetModifiedBy('');
-        SetModifiedDate('');
-
-
-
+  const SubmitHandler = async (e) => {
+    if (id == 0) {
+      const data = {
+        Name: Name,
+        CreateBy: CreateBy,
+        CreateDate: CreateDate,
+        ModifiedBy: ModifiedBy,
+        ModifiedDate: ModifiedDate,
+      };
+      try {
+        // const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
+        const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitPostData}`;
+        common.httpPost(postBussinssUnit, data);
+        ToasterSuccess("Success...!!");
+      } catch (error) {
+        console.log(error);
+        ToasterError("Error");
+      }
+      SetName("");
+      SetCreateBy("");
+      SetCreateDate("");
+      SetModifiedBy("");
+      SetModifiedDate("");
+    } else {
+      const data = {
+        Name: Name,
+        CreateBy: CreateBy,
+        CreateDate: CreateDate,
+        ModifiedBy: ModifiedBy,
+        ModifiedDate: ModifiedDate,
+      };
+      try {
+        const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitUpdateData}/${id}`;
+        common.httpPost(postBussinssUnit, data).then((res) => {
+          BussinssUnitgetdata();
+        });
+        ToasterSuccess("Success...!!");
+        // const res = await axios.post(env.apiURL + `bussinessUnit/BusinessUnit_UpdateData/${id}`, data)
+        // console.log(res);
+        setId(0);
+      } catch (error) {
+        console.log(error);
+        ToasterError("Error");
+      }
     }
 
-    function BussinssUnitgetdata() {
-        // axios.get(env.apiURL + `bussinessUnit/BusinessUnit_BussinssUnitgetdata`, {})
-        const getBussinssUnit = `${urlConstant.BusinessUnit.getBussinssUnitData}`
-        common.httpGet(getBussinssUnit)
-            .then(function (res) {
-                setList(res.data.data)
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
+    SetName("");
+    SetCreateBy("");
+    SetCreateDate("");
+    SetModifiedBy("");
+    SetModifiedDate("");
+  };
 
-    }
+  function BussinssUnitgetdata() {
+    // axios.get(env.apiURL + `bussinessUnit/BusinessUnit_BussinssUnitgetdata`, {})
+    const getBussinssUnit = `${urlConstant.BusinessUnit.getBussinssUnitData}`;
+    common
+      .httpGet(getBussinssUnit)
+      .then(function (res) {
+        setList(res.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+        ToasterError("Error");
+      });
+  }
 
-    const deletehandler = async (id) => {
-        const deleteBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitDeleteData}/${id}`
-                common.httpGet(deleteBussinssUnit).then((res)=>{
-                BussinssUnitgetdata()
-                })
-        // axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
-        // .then((res) => {
-        //     BussinssUnitgetdata()
-        // })
-    }
+  const deletehandler = async (id) => {
+    const deleteBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitDeleteData}/${id}`;
+    common.httpGet(deleteBussinssUnit).then((res) => {
+      BussinssUnitgetdata();
+    });
+    ToasterSuccess("Success...!!");
+    // axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
+    // .then((res) => {
+    //     BussinssUnitgetdata()
+    // })
+  };
 
-    const Edithandler = async (id) => {
-        const getBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitFindData}/${id}`
-        common.httpGet(getBussinssUnit)
-            .then((result) => {
-                setId(id)
-                SetName(result.data.data.Name)
-                SetCreateBy(result.data.data.CreateBy)
-                SetCreateDate(result.data.data.CreateDate)
-                SetModifiedBy(result.data.data.ModifiedBy)
-                SetModifiedDate(result.data.data.ModifiedDate)
-                console.log(result);
+  const Edithandler = async (id) => {
+    const getBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitFindData}/${id}`;
+    common.httpGet(getBussinssUnit).then((result) => {
+      setId(id);
+      SetName(result.data.data.Name);
+      SetCreateBy(result.data.data.CreateBy);
+      SetCreateDate(result.data.data.CreateDate);
+      SetModifiedBy(result.data.data.ModifiedBy);
+      SetModifiedDate(result.data.data.ModifiedDate);
+      console.log(result);
+    });
+  };
 
-            })
-    }
+  useEffect(() => {
+    BussinssUnitgetdata();
+  }, []);
 
-    useEffect(() => {
-        BussinssUnitgetdata()
-    }, [])
-    
-    return (
-        <>
-            <Header />
-            <LeftSection />
-            {/* Update PopUP [Model] */}
-            <div className="page">
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">BusinessUnit Update</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form onSubmit={SubmitHandler}>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={Name} onChange={(e) => { SetName(e.target.value) }} />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">CreateBy</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={CreateBy} onChange={(e) => { SetCreateBy(e.target.value) }} />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">CreateDate</label>
-                                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={CreateDate} onChange={(e) => { SetCreateDate(e.target.value) }} />
+  return (
+    <>
+      <ToastContainer />
+      <Header />
+      <LeftSection />
+      {/* Update PopUP [Model] */}
+      <div className="page">
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  BusinessUnit Update
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form onSubmit={SubmitHandler}>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      value={Name}
+                      onChange={(e) => {
+                        SetName(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">
+                      CreateBy
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      value={CreateBy}
+                      onChange={(e) => {
+                        SetCreateBy(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">
+                      CreateDate
+                    </label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      value={CreateDate}
+                      onChange={(e) => {
+                        SetCreateDate(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">
+                      ModifiedBy
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      value={ModifiedBy}
+                      onChange={(e) => {
+                        SetModifiedBy(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">
+                      ModifiedDate
+                    </label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      value={ModifiedDate}
+                      onChange={(e) => {
+                        SetModifiedDate(e.target.value);
+                      }}
+                    />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                  onClick={() => {
+                    SubmitHandler();
+                  }}
+                >
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">ModifiedBy</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={ModifiedBy} onChange={(e) => { SetModifiedBy(e.target.value) }} />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">ModifiedDate</label>
-                                        <input type="date" class="form-control" id="exampleInputPassword1" value={ModifiedDate} onChange={(e) => { SetModifiedDate(e.target.value) }} />
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
 
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type='submit'  class="btn btn-primary" data-dismiss="modal" onClick={()=>{SubmitHandler()}}>Save changes</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
 
 
                 <div id="page_top" className="section-body top_dark">
-                    <div className="container-fluid">
                     <div className="container-fluid">
                         <div className="page-header">
                             <div className="left">
                                 <a href="javascript:void(0)" className="icon menu_toggle mr-3">
                                     <i className="fa  fa-align-left" />
                                 </a>
-                                <h1 className="page-title">Business     Unit</h1>
+                                <h1 className="page-title">BusinessUnit</h1>
                             </div>
                             <div className="right">
-                                <div 
+                                <div className="input-icon xs-hide mr-4">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Search for..."
+                                    />
+                                    <span className="input-icon-addon">
+                                        <i className="fa fa-search" />
+                                    </span>
+                                </div>
+                                <div
                                     className="notification d-flex"
                                     style={{ display: "none !important" }}
-                                >                             
+                                >
+                                    <div className="dropdown d-flex">
+                                        <a
+                                            className="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2"
+                                            data-toggle="dropdown"
+                                        >
+                                            <i className="fa fa-language" />
+                                        </a>
+                                        <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a className="dropdown-item" href="#">
+                                                <img className="w20 mr-2" src="assets/images/flags/us.svg" />
+                                                English
+                                            </a>
+                                            <div className="dropdown-divider" />
+                                            <a className="dropdown-item" href="#">
+                                                <img className="w20 mr-2" src="assets/images/flags/es.svg" />
+                                                Spanish
+                                            </a>
+                                            <a className="dropdown-item" href="#">
+                                                <img className="w20 mr-2" src="assets/images/flags/jp.svg" />
+                                                japanese
+                                            </a>
+                                            <a className="dropdown-item" href="#">
+                                                <img className="w20 mr-2" src="assets/images/flags/bl.svg" />
+                                                France
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="dropdown d-flex">
+                                        <a
+                                            className="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2"
+                                            data-toggle="dropdown"
+                                        >
+                                            <i className="fa fa-envelope" />
+                                            <span className="badge badge-success nav-unread" />
+                                        </a>
+                                        <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <ul className="right_chat list-unstyled w350 p-0">
+                                                <li className="online">
+                                                    <a href="javascript:void(0);" className="media">
+                                                        <img
+                                                            className="media-object"
+                                                            src="assets/images/xs/avatar4.jpg"
+                                                            alt=""
+                                                        />
+                                                        <div className="media-body">
+                                                            <span className="name">Donald Gardner</span>
+                                                            <div className="message">
+                                                                It is a long established fact that a reader
+                                                            </div>
+                                                            <small>11 mins ago</small>
+                                                            <span className="badge badge-outline status" />
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li className="online">
+                                                    <a href="javascript:void(0);" className="media">
+                                                        <img
+                                                            className="media-object "
+                                                            src="assets/images/xs/avatar5.jpg"
+                                                            alt=""
+                                                        />
+                                                        <div className="media-body">
+                                                            <span className="name">Wendy Keen</span>
+                                                            <div className="message">
+                                                                There are many variations of passages of Lorem Ipsum
+                                                            </div>
+                                                            <small>18 mins ago</small>
+                                                            <span className="badge badge-outline status" />
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li className="offline">
+                                                    <a href="javascript:void(0);" className="media">
+                                                        <img
+                                                            className="media-object "
+                                                            src="assets/images/xs/avatar2.jpg"
+                                                            alt=""
+                                                        />
+                                                        <div className="media-body">
+                                                            <span className="name">Matt Rosales</span>
+                                                            <div className="message">
+                                                                Contrary to popular belief, Lorem Ipsum is not simply
+                                                            </div>
+                                                            <small>27 mins ago</small>
+                                                            <span className="badge badge-outline status" />
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li className="online">
+                                                    <a href="javascript:void(0);" className="media">
+                                                        <img
+                                                            className="media-object "
+                                                            src="assets/images/xs/avatar3.jpg"
+                                                            alt=""
+                                                        />
+                                                        <div className="media-body">
+                                                            <span className="name">Phillip Smith</span>
+                                                            <div className="message">
+                                                                It has roots in a piece of classical Latin literature
+                                                                from 45 BC
+                                                            </div>
+                                                            <small>33 mins ago</small>
+                                                            <span className="badge badge-outline status" />
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div className="dropdown-divider" />
+                                            <a
+                                                href="javascript:void(0)"
+                                                className="dropdown-item text-center text-muted-dark readall"
+                                            >
+                                                Mark all as read
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="dropdown d-flex">
+                                        <a
+                                            className="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2"
+                                            data-toggle="dropdown"
+                                        >
+                                            <i className="fa fa-bell" />
+                                            <span className="badge badge-primary nav-unread" />
+                                        </a>
+                                        <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <ul className="list-unstyled feeds_widget">
+                                                <li>
+                                                    <div className="feeds-left">
+                                                        <i className="fa fa-check" />
+                                                    </div>
+                                                    <div className="feeds-body">
+                                                        <h4 className="title text-danger">
+                                                            Issue Fixed{" "}
+                                                            <small className="float-right text-muted">11:05</small>
+                                                        </h4>
+                                                        <small>WE have fix all Design bug with Responsive</small>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="feeds-left">
+                                                        <i className="fa fa-user" />
+                                                    </div>
+                                                    <div className="feeds-body">
+                                                        <h4 className="title">
+                                                            New User{" "}
+                                                            <small className="float-right text-muted">10:45</small>
+                                                        </h4>
+                                                        <small>I feel great! Thanks team</small>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="feeds-left">
+                                                        <i className="fa fa-thumbs-o-up" />
+                                                    </div>
+                                                    <div className="feeds-body">
+                                                        <h4 className="title">
+                                                            7 New Feedback{" "}
+                                                            <small className="float-right text-muted">Today</small>
+                                                        </h4>
+                                                        <small>It will give a smart finishing to your site</small>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="feeds-left">
+                                                        <i className="fa fa-question-circle" />
+                                                    </div>
+                                                    <div className="feeds-body">
+                                                        <h4 className="title text-warning">
+                                                            Server Warning{" "}
+                                                            <small className="float-right text-muted">10:50</small>
+                                                        </h4>
+                                                        <small>Your connection is not private</small>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="feeds-left">
+                                                        <i className="fa fa-shopping-cart" />
+                                                    </div>
+                                                    <div className="feeds-body">
+                                                        <h4 className="title">
+                                                            7 New Orders{" "}
+                                                            <small className="float-right text-muted">11:35</small>
+                                                        </h4>
+                                                        <small>You received a new oder from Tina.</small>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div className="dropdown-divider" />
+                                            <a
+                                                href="javascript:void(0)"
+                                                className="dropdown-item text-center text-muted-dark readall"
+                                            >
+                                                Mark all as read
+                                            </a>
+                                        </div>
+                                    </div>
                                     <div className="dropdown d-flex">
                                         <a
                                             className="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2"
@@ -194,7 +481,22 @@ function BusinessUnit() {
                                             <a className="dropdown-item" href="page-profile.html">
                                                 <i className="dropdown-icon fe fe-user" /> Profile
                                             </a>
-                                    
+                                            <a className="dropdown-item" href="app-setting.html">
+                                                <i className="dropdown-icon fe fe-settings" /> Settings
+                                            </a>
+                                            <a className="dropdown-item" href="javascript:void(0)">
+                                                <span className="float-right">
+                                                    <span className="badge badge-primary">6</span>
+                                                </span>
+                                                <i className="dropdown-icon fe fe-mail" /> Inbox
+                                            </a>
+                                            <a className="dropdown-item" href="javascript:void(0)">
+                                                <i className="dropdown-icon fe fe-send" /> Message
+                                            </a>
+                                            <div className="dropdown-divider" />
+                                            <a className="dropdown-item" href="javascript:void(0)">
+                                                <i className="dropdown-icon fe fe-help-circle" /> Need help?
+                                            </a>
                                             <a className="dropdown-item" href="login.html">
                                                 <i className="dropdown-icon fe fe-log-out" /> Sign out
                                             </a>
@@ -203,7 +505,6 @@ function BusinessUnit() {
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
                 <div className="section-body mt-3">
@@ -381,46 +682,64 @@ function BusinessUnit() {
                                                             <option value={20}>Female</option>
                                                         </select>
                                                     </div> */}
-                                                    <div className="col-md-3 col-sm-12">
-                                                        <div className="form-group">
-                                                            <label>ModifiedBy</label>
-                                                            <input type="text" className="form-control" value={ModifiedBy} onChange={(e) => { SetModifiedBy(e.target.value) }} />
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-md-3 col-sm-12">
-                                                        <div className="form-group">
-                                                            <label>ModifiedDate</label>
-                                                            <input type="date" className="form-control" value={ModifiedDate} onChange={(e) => { SetModifiedDate(e.target.value) }} />
-                                                        </div>
-                                                    </div>
+                          <div className="col-md-3 col-sm-12">
+                            <div className="form-group">
+                              <label>ModifiedBy</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                value={ModifiedBy}
+                                onChange={(e) => {
+                                  SetModifiedBy(e.target.value);
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-md-3 col-sm-12">
+                            <div className="form-group">
+                              <label>ModifiedDate</label>
+                              <input
+                                type="date"
+                                className="form-control"
+                                value={ModifiedDate}
+                                onChange={(e) => {
+                                  SetModifiedDate(e.target.value);
+                                }}
+                              />
+                            </div>
+                          </div>
 
-                                                    <div className="col-sm-12 ">
-                                                        {/* <button type="submit" className="btn btn-primary" onClick={() => { SubmitHandler() }}>
+                          <div className="col-sm-12 ">
+                            {/* <button type="submit" className="btn btn-primary" onClick={() => { SubmitHandler() }}>
                                                             Submit
                                                         </button> */}
-                                                        <input type='submit' class="btn btn-primary" value='Submit'/>
+                            <input
+                              type="submit"
+                              class="btn btn-primary"
+                              value="Submit"
+                            />
 
-                                                        <button
-                                                            type="submit"
-                                                            className="btn btn-outline-secondary mx-2"
-                                                        >
-                                                            Cancel
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <button
+                              type="submit"
+                              className="btn btn-outline-secondary mx-2"
+                            >
+                              Cancel
+                            </button>
+                          </div>
                         </div>
+                      </form>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <Footer />
-        </>
-    )
+      <Footer />
+    </>
+  );
 }
 
 export default BusinessUnit;
