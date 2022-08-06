@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import LeftSection from "../LeftSection/LeftSection";
 import CommonService from "../../services/commonService";
 import urlConstant from "../../constants/urlConstant";
-import { ToasterSuccess, ToasterError } from "../../constants/toaster";
+import { ToasterSuccess, ToasterError } from "../../common/toaster";
 import { env } from "../../env";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
@@ -604,7 +604,7 @@ function FunctionalGroup() {
           </div>
         </div>
       </div>
-      
+
       <Footer />
     </>
   );
