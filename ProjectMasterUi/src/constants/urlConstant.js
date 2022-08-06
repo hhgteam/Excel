@@ -27,7 +27,9 @@ const urlConstant = {
     ProjectRecourceFindData: `${apiURL}projectresourcedetail/ProjectResourceDetail_FindData`,
     ProjectRecourceUpdateData: `${apiURL}projectresourcedetail/ProjectResourceDetail_UpdateData`,
   },
-  
+  User:{
+    UserDataPost: `${apiURL}users/register`,
+  }
 };
 
 export { urlConstant as default };

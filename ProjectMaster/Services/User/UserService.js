@@ -8,16 +8,7 @@ const { create } = require("../../model/BusinessUnitModel");
 exports.registerUser = async function (req, res, next) {
   try {
    // Get user input
-    const { FirstName, LastName, Email, Password,
-      UserName,
-      CreateBy,
-      Phone,
-      IsActive,
-      UserRole,
-      Gender,
-      ForgotPasswordToken,
-      FunctionalGroupId,
-      ModifiedBy, } = req.body;
+    const { FirstName, LastName, Email, Password,UserName,Phone, Gender,} = req.body;
 
     // Validate user input
     if (!(Email && Password && FirstName && LastName)) {
@@ -37,19 +28,15 @@ exports.registerUser = async function (req, res, next) {
 
     // Create user in our database
     const user = await UserModel.create({
+      UserName,  
+      Email: Email, // sanitize: convert email to lowercase
+      encryptedPassword,
+      IsActive:true,
       FirstName,
       LastName,
-      UserName,
-      UserRole,
-      IsActive,
-      Gender,
-      ForgotPasswordToken,
-      FunctionalGroupId,
+      Gender,   
       Phone,
-      CreateBy,
-      ModifiedBy,
-      Email: Email, // sanitize: convert email to lowercase
-      Password: encryptedPassword,
+     
     });
 
    // let TOKEN_KEY = config.TOKEN_KEY;
