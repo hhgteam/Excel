@@ -1,169 +1,251 @@
-import React, { useState, useEffect } from 'react'
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import LeftSection from '../LeftSection/LeftSection';
-import  CommonService from '../../services/commonService';
-import { env } from '../../env'
-import axios from 'axios';
-import urlConstant from '../../constants/urlConstant';
+import React, { useState, useEffect } from "react";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import LeftSection from "../LeftSection/LeftSection";
+import CommonService from "../../services/commonService";
+import { env } from "../../env";
+import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import { ToasterSuccess, ToasterError } from "../../constants/toaster";
+import urlConstant from "../../constants/urlConstant";
 
 function BusinessUnit() {
-    const [id, setId] = useState(0)
-    const [Name, SetName] = useState('')
-    const [CreateBy, SetCreateBy] = useState('')
-    const [CreateDate, SetCreateDate] = useState('')
-    const [ModifiedBy, SetModifiedBy] = useState('')
-    const [ModifiedDate, SetModifiedDate] = useState('')
-    const [List, setList] = useState([]);
+  const [id, setId] = useState(0);
+  const [Name, SetName] = useState("");
+  const [CreateBy, SetCreateBy] = useState("");
+  const [CreateDate, SetCreateDate] = useState("");
+  const [ModifiedBy, SetModifiedBy] = useState("");
+  const [ModifiedDate, SetModifiedDate] = useState("");
+  const [List, setList] = useState([]);
 
-    let common = new CommonService()
-    
-    const SubmitHandler = async (e) => {
-        if (id == 0) {
-            const data = {
-                
-                Name: Name,
-                CreateBy: CreateBy,
-                CreateDate: CreateDate,
-                ModifiedBy: ModifiedBy,
-                ModifiedDate: ModifiedDate,
-            }
-            try {
-                // const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
-                const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitPostData}`
-                common.httpPost(postBussinssUnit,data)
-            } catch (error) {
-                console.log(error);
-            }
-            SetName('');
-            SetCreateBy('');
-            SetCreateDate('');
-            SetModifiedBy('');
-            SetModifiedDate('');
-        }
-        else{
-            const data = {
-                Name: Name,
-                CreateBy: CreateBy,
-                CreateDate: CreateDate,
-                ModifiedBy: ModifiedBy,
-                ModifiedDate: ModifiedDate,
-            }
-            try {
-                const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitUpdateData}/${id}`
-                common.httpPost(postBussinssUnit,data).then((res)=>{
-                BussinssUnitgetdata()
-                })
-                // const res = await axios.post(env.apiURL + `bussinessUnit/BusinessUnit_UpdateData/${id}`, data)
-                // console.log(res);
-                setId(0)
-            } catch (error) {
-                console.log(error);
-            }
-        }
+  let common = new CommonService();
 
-        SetName('');
-        SetCreateBy('');
-        SetCreateDate('');
-        SetModifiedBy('');
-        SetModifiedDate('');
-
-
-
+  const SubmitHandler = async (e) => {
+    if (id == 0) {
+      const data = {
+        Name: Name,
+        CreateBy: CreateBy,
+        CreateDate: CreateDate,
+        ModifiedBy: ModifiedBy,
+        ModifiedDate: ModifiedDate,
+      };
+      try {
+        // const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
+        const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitPostData}`;
+        common.httpPost(postBussinssUnit, data);
+        ToasterSuccess("Success...!!");
+      } catch (error) {
+        console.log(error);
+        ToasterError("Error");
+      }
+      SetName("");
+      SetCreateBy("");
+      SetCreateDate("");
+      SetModifiedBy("");
+      SetModifiedDate("");
+    } else {
+      const data = {
+        Name: Name,
+        CreateBy: CreateBy,
+        CreateDate: CreateDate,
+        ModifiedBy: ModifiedBy,
+        ModifiedDate: ModifiedDate,
+      };
+      try {
+        const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitUpdateData}/${id}`;
+        common.httpPost(postBussinssUnit, data).then((res) => {
+          BussinssUnitgetdata();
+        });
+        ToasterSuccess("Success...!!");
+        // const res = await axios.post(env.apiURL + `bussinessUnit/BusinessUnit_UpdateData/${id}`, data)
+        // console.log(res);
+        setId(0);
+      } catch (error) {
+        console.log(error);
+        ToasterError("Error");
+      }
     }
 
-    function BussinssUnitgetdata() {
-        // axios.get(env.apiURL + `bussinessUnit/BusinessUnit_BussinssUnitgetdata`, {})
-        const getBussinssUnit = `${urlConstant.BusinessUnit.getBussinssUnitData}`
-        common.httpGet(getBussinssUnit)
-            .then(function (res) {
-                setList(res.data.data)
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
+    SetName("");
+    SetCreateBy("");
+    SetCreateDate("");
+    SetModifiedBy("");
+    SetModifiedDate("");
+  };
 
-    }
+  function BussinssUnitgetdata() {
+    // axios.get(env.apiURL + `bussinessUnit/BusinessUnit_BussinssUnitgetdata`, {})
+    const getBussinssUnit = `${urlConstant.BusinessUnit.getBussinssUnitData}`;
+    common
+      .httpGet(getBussinssUnit)
+      .then(function (res) {
+        setList(res.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+        ToasterError("Error");
+      });
+  }
 
-    const deletehandler = async (id) => {
-        const deleteBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitDeleteData}/${id}`
-                common.httpGet(deleteBussinssUnit).then((res)=>{
-                BussinssUnitgetdata()
-                })
-        // axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
-        // .then((res) => {
-        //     BussinssUnitgetdata()
-        // })
-    }
+  const deletehandler = async (id) => {
+    const deleteBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitDeleteData}/${id}`;
+    common.httpGet(deleteBussinssUnit).then((res) => {
+      BussinssUnitgetdata();
+    });
+    ToasterSuccess("Success...!!");
+    // axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
+    // .then((res) => {
+    //     BussinssUnitgetdata()
+    // })
+  };
 
-    const Edithandler = async (id) => {
-        const getBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitFindData}/${id}`
-        common.httpGet(getBussinssUnit)
-            .then((result) => {
-                setId(id)
-                SetName(result.data.data.Name)
-                SetCreateBy(result.data.data.CreateBy)
-                SetCreateDate(result.data.data.CreateDate)
-                SetModifiedBy(result.data.data.ModifiedBy)
-                SetModifiedDate(result.data.data.ModifiedDate)
-                console.log(result);
+  const Edithandler = async (id) => {
+    const getBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitFindData}/${id}`;
+    common.httpGet(getBussinssUnit).then((result) => {
+      setId(id);
+      SetName(result.data.data.Name);
+      SetCreateBy(result.data.data.CreateBy);
+      SetCreateDate(result.data.data.CreateDate);
+      SetModifiedBy(result.data.data.ModifiedBy);
+      SetModifiedDate(result.data.data.ModifiedDate);
+      console.log(result);
+    });
+  };
 
-            })
-    }
+  useEffect(() => {
+    BussinssUnitgetdata();
+  }, []);
 
-    useEffect(() => {
-        BussinssUnitgetdata()
-    }, [])
-    
-    return (
-        <>
-            <Header />
-            <LeftSection />
-            {/* Update PopUP [Model] */}
-            <div className="page">
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">BusinessUnit Update</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form onSubmit={SubmitHandler}>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={Name} onChange={(e) => { SetName(e.target.value) }} />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">CreateBy</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={CreateBy} onChange={(e) => { SetCreateBy(e.target.value) }} />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">CreateDate</label>
-                                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={CreateDate} onChange={(e) => { SetCreateDate(e.target.value) }} />
-
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">ModifiedBy</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={ModifiedBy} onChange={(e) => { SetModifiedBy(e.target.value) }} />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">ModifiedDate</label>
-                                        <input type="date" class="form-control" id="exampleInputPassword1" value={ModifiedDate} onChange={(e) => { SetModifiedDate(e.target.value) }} />
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type='submit'  class="btn btn-primary" data-dismiss="modal" onClick={()=>{SubmitHandler()}}>Save changes</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <>
+      <ToastContainer />
+      <Header />
+      <LeftSection />
+      {/* Update PopUP [Model] */}
+      <div className="page">
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  BusinessUnit Update
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form onSubmit={SubmitHandler}>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      value={Name}
+                      onChange={(e) => {
+                        SetName(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">
+                      CreateBy
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      value={CreateBy}
+                      onChange={(e) => {
+                        SetCreateBy(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">
+                      CreateDate
+                    </label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      value={CreateDate}
+                      onChange={(e) => {
+                        SetCreateDate(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">
+                      ModifiedBy
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      value={ModifiedBy}
+                      onChange={(e) => {
+                        SetModifiedBy(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">
+                      ModifiedDate
+                    </label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      value={ModifiedDate}
+                      onChange={(e) => {
+                        SetModifiedDate(e.target.value);
+                      }}
+                    />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                  onClick={() => {
+                    SubmitHandler();
+                  }}
+                >
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -600,46 +682,64 @@ function BusinessUnit() {
                                                             <option value={20}>Female</option>
                                                         </select>
                                                     </div> */}
-                                                    <div className="col-md-3 col-sm-12">
-                                                        <div className="form-group">
-                                                            <label>ModifiedBy</label>
-                                                            <input type="text" className="form-control" value={ModifiedBy} onChange={(e) => { SetModifiedBy(e.target.value) }} />
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-md-3 col-sm-12">
-                                                        <div className="form-group">
-                                                            <label>ModifiedDate</label>
-                                                            <input type="date" className="form-control" value={ModifiedDate} onChange={(e) => { SetModifiedDate(e.target.value) }} />
-                                                        </div>
-                                                    </div>
+                          <div className="col-md-3 col-sm-12">
+                            <div className="form-group">
+                              <label>ModifiedBy</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                value={ModifiedBy}
+                                onChange={(e) => {
+                                  SetModifiedBy(e.target.value);
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-md-3 col-sm-12">
+                            <div className="form-group">
+                              <label>ModifiedDate</label>
+                              <input
+                                type="date"
+                                className="form-control"
+                                value={ModifiedDate}
+                                onChange={(e) => {
+                                  SetModifiedDate(e.target.value);
+                                }}
+                              />
+                            </div>
+                          </div>
 
-                                                    <div className="col-sm-12 ">
-                                                        {/* <button type="submit" className="btn btn-primary" onClick={() => { SubmitHandler() }}>
+                          <div className="col-sm-12 ">
+                            {/* <button type="submit" className="btn btn-primary" onClick={() => { SubmitHandler() }}>
                                                             Submit
                                                         </button> */}
-                                                        <input type='submit' class="btn btn-primary" value='Submit'/>
+                            <input
+                              type="submit"
+                              class="btn btn-primary"
+                              value="Submit"
+                            />
 
-                                                        <button
-                                                            type="submit"
-                                                            className="btn btn-outline-secondary mx-2"
-                                                        >
-                                                            Cancel
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <button
+                              type="submit"
+                              className="btn btn-outline-secondary mx-2"
+                            >
+                              Cancel
+                            </button>
+                          </div>
                         </div>
+                      </form>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <Footer />
-        </>
-    )
+      <Footer />
+    </>
+  );
 }
 
 export default BusinessUnit;
