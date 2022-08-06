@@ -7,7 +7,9 @@ const User = new mongoose.Schema({
     unique: true,
     min: 1,
   },
-  token: { type: String },
+  token: {  
+    type: String
+   },
   UserName: {
     type: String,
   },
