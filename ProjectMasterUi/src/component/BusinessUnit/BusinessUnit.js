@@ -89,7 +89,7 @@ function BusinessUnit() {
 
   const deletehandler = async (id) => {
     const deleteBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitDeleteData}/${id}`;
-    common.httpGet(deleteBussinssUnit).then((res) => {
+    common.httpDelete(deleteBussinssUnit).then((res) => {
       BussinssUnitgetdata();
     });
     ToasterSuccess("Success...!!");
@@ -101,7 +101,7 @@ function BusinessUnit() {
 
   const Edithandler = async (id) => {
     const getBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitFindData}/${id}`;
-    common.httpDelete(getBussinssUnit).then((result) => {
+    common.httpGet(getBussinssUnit).then((result) => {
       setId(id);
       SetName(result.data.data.Name);
       SetCreateBy(result.data.data.CreateBy);
