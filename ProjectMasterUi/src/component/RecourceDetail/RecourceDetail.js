@@ -128,7 +128,7 @@ function RecourceDetail() {
 
     const deletehandler = async (id) => {
         const deletegetRecourceDetail = `${urlConstant.recourceDetail.recourceDeleteData}/${id}`
-                common.httpGet(deletegetRecourceDetail).then((res)=>{
+                common.httpDelete(deletegetRecourceDetail).then((res)=>{
                   RecourceDetailgetdata()
                 })
                 ToasterSuccess("Success...!!");
