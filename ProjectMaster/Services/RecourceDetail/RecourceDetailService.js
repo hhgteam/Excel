@@ -99,7 +99,7 @@ exports.RecourceDetail_PostData = async function (req, res, next) {
       RecourceDetail_Data.Month = req.body.Month;
     
     
-      const RecourceDetail_UpdateData_data = await RecourceDetailModel.findByIdAndUpdate(req.params.id , Function_FindById_Data)
+      const RecourceDetail_UpdateData_data = await RecourceDetailModel.findByIdAndUpdate(req.params.id , RecourceDetail_Data)
       return res.status(202).json({
         status: "success",
         data: RecourceDetail_UpdateData_data,
