@@ -46,12 +46,12 @@ const RecourceDetail = new mongoose.Schema({
     default: Date.now,
   },
   Year: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    // default: Date.now,
   },
   Month: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    // default: Date.now,
   }
 });
 

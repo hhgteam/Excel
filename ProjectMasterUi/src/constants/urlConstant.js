@@ -29,6 +29,13 @@ const urlConstant = {
   },
   User:{
     UserDataPost: `${apiURL}users/register`,
+  },
+  recourceDetail:{
+    getRecourceData:  `${apiURL}recourcedetail/RecourceDetail_GetData`,
+    recourcePostData: `${apiURL}recourcedetail/RecourceDetail_PostData`,
+    recourceDeleteData: `${apiURL}recourcedetail/RecourceDetail_DeleteData`,
+    recourceFindData: `${apiURL}recourcedetail/RecourceDetail_FindData`,
+    recourceUpdateData: `${apiURL}recourcedetail/RecourceDetail_UpdateData`,
   }
 };
 
