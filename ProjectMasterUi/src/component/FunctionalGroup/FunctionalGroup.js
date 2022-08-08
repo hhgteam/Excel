@@ -119,7 +119,7 @@ function FunctionalGroup() {
   const deletehandler = async (id) => {
     const deleteFunctionalGroup = `${urlConstant.functionalGroup.functionalDeleteData}/${id}`;
 
-    common.httpGet(deleteFunctionalGroup).then((res) => {
+    common.httpdelete(deleteFunctionalGroup).then((res) => {
       functionalGetData();
     });
     ToasterSuccess("Success...!!").catch((error) => {

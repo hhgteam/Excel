@@ -8,7 +8,7 @@ var api  = require('../controller/FunctionalGroup/FunctionalGroupController');
 
 router.post("/FunctionalGroup_PostData",  api.FunctionalGroup_PostData);
 router.get("/FunctionalGroup_GetData",  api.FunctionalGroup_GetData);
-router.get("/FunctionalGroup_DeleteData/:id",  api.FunctionalGroup_DeleteData);
+router.delete("/FunctionalGroup_DeleteData/:id",  api.FunctionalGroup_DeleteData);
 router.get("/FunctionalGroup_FindData/:id",  api.FunctionalGroup_FindData);
 router.post("/FunctionalGroup_UpdateData/:id",  api.FunctionalGroup_UpdateData);
 

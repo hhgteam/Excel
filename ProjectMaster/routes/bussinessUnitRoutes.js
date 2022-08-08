@@ -8,7 +8,7 @@ var api = require("../controller/BusinessUnit/BusinessUnitController");
 
 router.post("/BusinessUnit_PostData", api.BusinessUnit_PostData);
 router.get("/BusinessUnit_GetData", api.BusinessUnit_GetData);
-router.get("/BusinessUnit_DeleteData/:id", api.BusinessUnit_DeleteData);
+router.delete("/BusinessUnit_DeleteData/:id", api.BusinessUnit_DeleteData);
 router.get("/BusinessUnit_FindData/:id", api.BusinessUnit_FindData);
 router.post("/BusinessUnit_UpdateData/:id", api.BusinessUnit_UpdateData);
 

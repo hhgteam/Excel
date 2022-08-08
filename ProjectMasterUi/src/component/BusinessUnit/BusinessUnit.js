@@ -101,7 +101,7 @@ function BusinessUnit() {
 
   const Edithandler = async (id) => {
     const getBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitFindData}/${id}`;
-    common.httpGet(getBussinssUnit).then((result) => {
+    common.httpDelete(getBussinssUnit).then((result) => {
       setId(id);
       SetName(result.data.data.Name);
       SetCreateBy(result.data.data.CreateBy);

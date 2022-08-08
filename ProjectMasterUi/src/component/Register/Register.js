@@ -19,11 +19,11 @@ function Register() {
   function SubmitData(){
     
     
-    if(!UserName || !Email || !Password || !FirstName || !LastName || !Phone || !Gender )
-    { 
-      ToasterError("Please Enter Details..!!");
-      return
-    }
+    // if(!UserName || !Email || !Password || !FirstName || !LastName || !Phone || !Gender )
+    // { 
+    //   ToasterError("Please Enter Details..!!");
+    //   return
+    // }
 
 
 

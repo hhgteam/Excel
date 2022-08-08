@@ -98,7 +98,7 @@ function ProjectRecourceDetail() {
 
     const deletehandler = async (id) => {
         const deleteProjectRecourcedata = `${urlConstant.ProjectRecourceDetail.ProjectRecourceDeleteData}/${id}`
-                common.httpGet(deleteProjectRecourcedata).then((res)=>{
+                common.httpDelete(deleteProjectRecourcedata).then((res)=>{
                 BussinssUnitgetdata()
                 })
         // axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})

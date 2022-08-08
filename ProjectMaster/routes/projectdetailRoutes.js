@@ -8,7 +8,7 @@ var api  = require('../controller/ProjectDetails/ProjectDetailsController');
 
 router.post("/ProjectDetails_PostData",  api.ProjectDetails_PostData);
 router.get("/ProjectDetails_GetData",  api.ProjectDetails_GetData);
-router.get("/ProjectDetails_DeleteData/:id",  api.ProjectDetails_DeleteData);
+router.delete("/ProjectDetails_DeleteData/:id",  api.ProjectDetails_DeleteData);
 router.get("/ProjectDetails_FindData/:id",  api.ProjectDetails_FindData);
 router.post("/ProjectDetails_UpdateData/:id",  api.ProjectDetails_UpdateData);
 

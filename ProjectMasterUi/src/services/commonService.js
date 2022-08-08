@@ -1,4 +1,6 @@
 import axiosInstance from '../common/Interceptor';
+import swal from 'sweetalert'
+
 //import axios from 'axios';
 
 class CommonService {
@@ -21,6 +23,30 @@ class CommonService {
             .catch((error) => {
                 reject(error);
             });
+
+    });
+     httpDelete = async (requestURL, authorizationRequired) => new Promise((resolve, reject) => {
+        swal({
+            title: 'Are you sure Delete Your Data?',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+                axiosInstance.delete(requestURL)
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+                  
+              }
+              
+             
+            
+          })
+      
 
     });
 

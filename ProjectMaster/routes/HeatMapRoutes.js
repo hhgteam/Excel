@@ -8,7 +8,7 @@ var api  = require('../controller/HeatMap/HeatMapController');
 
 router.post("/HeatMap_PostData",  api.HeatMap_PostData);
 router.get("/HeatMap_GetData",  api.HeatMap_GetData);
-router.get("/HeatMap_DeleteData/:id",  api.HeatMap_DeleteData);
+router.delete("/HeatMap_DeleteData/:id",  api.HeatMap_DeleteData);
 router.get("/HeatMap_FindData/:id",  api.HeatMap_FindData);
 router.post("/HeatMap_UpdateData/:id",  api.HeatMap_UpdateData);
 
