@@ -12,9 +12,10 @@ function Register() {
   const [LastName, SetLastName] = useState("");
   const [Phone, SetPhone] = useState("");
   const [Gender, SetGender] = useState("");
-
+  const [Submitted,SetSubmitted] = useState(false)
   function SubmitData(){
   
+    SetSubmitted(true)
   
     const UserData = {
       UserName: UserName,
@@ -41,8 +42,22 @@ function Register() {
     }
   
   }
-
+  
   return (
+   <>
+   <style >{`
+    .invalid{
+     border: 1px solid #dc3545;
+
+    }
+    .invalid_span{
+      color:red;
+    }
+    .valid_span{
+      display:none;
+    }
+`}</style>
+
     <div className="auth">
       <div className="auth_left">
         <div className="card">
@@ -57,63 +72,70 @@ function Register() {
               <label className="form-label">User Name</label>
               <input
                 type="text"
-                className="form-control"
+                className={'form-control' + ( Submitted && !UserName ? ' invalid' : '')}
                 placeholder="Enter name"
                 value={UserName}
                 onChange={(e) => {
                   SetUserName(e.target.value);
                 }}
               />
+              <span  className={ ( Submitted && !UserName ? ' invalid_span' : 'valid_span')}>username is requried</span>
             </div>
-            <div className="form-group">
+            <div className="form-group ">
               <label className="form-label">Email address</label>
               <input
                 type="email"
-                className="form-control"
+                className={'form-control' + ( Submitted && !Email ? ' invalid' : '')}
                 placeholder="Enter email"
                 value={Email}
                 onChange={(e) => {
                   SetEmail(e.target.value);
                 }}
               />
+              <span  className={ ( Submitted && !Email ? ' invalid_span' : 'valid_span')}>email is requried</span>
             </div>
             <div className="form-group">
               <label className="form-label">Password</label>
               <input
                 type="password"
-                className="form-control"
+                className={'form-control' + ( Submitted && !Password ? ' invalid' : '')}
                 placeholder="Password"
                 value={Password}
                 onChange={(e) => {
                   SetPassword(e.target.value);
                 }}
               />
+             <span  className={ ( Submitted && !Password ? ' invalid_span' : 'valid_span')}>password is requried</span>
             </div>
 
             <div className="form-group">
               <label className="form-label">First Name</label>
               <input
                 type="text"
-                className="form-control"
+                className={'form-control' + ( Submitted && !FirstName ? ' invalid' : '')}
                 placeholder="Enter name"
                 value={FirstName}
                 onChange={(e) => {
                   SetFirstName(e.target.value);
                 }}
               />
+              <span  className={ ( Submitted && !FirstName ? ' invalid_span' : 'valid_span')}>firstname is requried</span>
+
             </div>
 
             <div className="form-group">
               <label className="form-label">Last Name</label>
               <input
                 type="text"
-                className="form-control"
+                className={'form-control' + ( Submitted && !LastName ? ' invalid' : '')}
                 placeholder="Enter name"
                 value={LastName}
                 onChange={(e) => {
                   SetLastName(e.target.value);
                 }}
               />
+              <span  className={ ( Submitted && !LastName ? ' invalid_span' : 'valid_span')}>lastname is requried</span>
+
             </div>
             <div className="form-group">
               <label className="form-label">Gender</label>
@@ -137,19 +159,23 @@ function Register() {
                 }}
               />
               Female
+             <br></br> <span  className={ ( Submitted && !Gender ? ' invalid_span' : 'valid_span')}>gender is requried</span>
+
             </div>
 
             <div className="form-group">
               <label className="form-label">Phone</label>
               <input
                 type="text"
-                className="form-control"
+                className={'form-control' + ( Submitted && !Phone ? ' invalid' : '')}
                 placeholder="Enter name"
                 value={Phone}
                 onChange={(e) => {
                   SetPhone(e.target.value);
                 }}
               />
+              <span  className={ ( Submitted && !Phone ? ' invalid_span' : 'valid_span')}>Phonenumber is requried</span>
+
             </div>
 
             <div className="form-group">
@@ -172,7 +198,9 @@ function Register() {
         </div>
       </div>
       <div className="auth_right full_img" />
+
     </div>
+    </>
   );
 }
 

@@ -147,7 +147,7 @@ function FunctionalGroup() {
   }, []);
   return (
     <>
-      <ToastContainer />;
+      <ToastContainer />
       <Header />
       <LeftSection />
       {/* Update PopUP [Model] */}
