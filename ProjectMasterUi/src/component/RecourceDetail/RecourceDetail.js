@@ -208,6 +208,10 @@ function RecourceDetail() {
                                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value={ResorcesCapacity} onChange={(e) => { SetResorcesCapacity(e.target.value) }} />
                                     </div>
                                     <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Notes</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value={Notes} onChange={(e) => { SetNotes(e.target.value) }} />
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Year</label>
                                         <input type="date" class="form-control" id="exampleInputPassword1"  value={Year} onChange={(e) => { SetYear(e.target.value) }} />
                                     </div>
