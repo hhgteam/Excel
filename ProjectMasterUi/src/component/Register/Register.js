@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CommonService from "../../services/commonService";
 import urlConstant from "../../constants/urlConstant";
-import { env } from "../../env";
+import { ToasterSuccess, ToasterError } from "../../common/toaster";
+import { ToastContainer } from "react-toastify";
+
 function Register() {
   let common = new CommonService();
+  
   const [UserName, SetUserName] = useState("");
   const [Email, SetEmail] = useState("");
   const [Password, SetPassword] = useState("");
@@ -14,7 +17,16 @@ function Register() {
   const [Gender, SetGender] = useState("");
   const [Submitted,SetSubmitted] = useState(false)
   function SubmitData(){
-  
+    
+    
+    if(!UserName || !Email || !Password || !FirstName || !LastName || !Phone || !Gender )
+    { 
+      ToasterError("Please Enter Details..!!");
+      return
+    }
+
+
+
     SetSubmitted(true)
   
     const UserData = {
@@ -57,6 +69,7 @@ function Register() {
       display:none;
     }
 `}</style>
+  <ToastContainer/>
 
     <div className="auth">
       <div className="auth_left">
