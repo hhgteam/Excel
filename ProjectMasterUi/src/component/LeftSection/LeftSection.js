@@ -37,7 +37,7 @@ function LeftSection() {
           </li>
           <li>
             <Link to="/FunctionalGroup">
-              <i className="fa fa-calendar" />
+              <i className="fa fa-comments" />
               <span>Functional Group</span>
             </Link>
           </li>
@@ -55,7 +55,7 @@ function LeftSection() {
           </li>
           <li>
             <Link to="/ProjectRecourceDetail">
-              <i className="fa fa-comments" />
+              <i className="fa fa-calendar  " />
               <span>Project Recource</span>
             </Link>
           </li>
