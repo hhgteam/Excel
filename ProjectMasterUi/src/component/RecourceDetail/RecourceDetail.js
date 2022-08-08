@@ -6,7 +6,8 @@ import  CommonService from '../../services/commonService';
 import { env } from '../../env'
 import axios from 'axios';
 import urlConstant from '../../constants/urlConstant';
-
+import { ToastContainer } from "react-toastify";
+import { ToasterSuccess, ToasterError } from "../../common/toaster";
 function RecourceDetail() {
   const [id, setId] = useState(0);
   const [Name, SetName] = useState("");
@@ -45,9 +46,11 @@ function RecourceDetail() {
             try {
                 // const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
                 const postRecourceDetail = `${urlConstant.recourceDetail.recourcePostData}`
-                common.httpPost(postRecourceDetail,data)
+                common.httpPost(postRecourceDetail,data);
+                ToasterSuccess("Success...!!");
             } catch (error) {
                 console.log(error);
+                ToasterError("Error");
             }
             SetUserid("");
             SetName("");
@@ -84,9 +87,11 @@ function RecourceDetail() {
                 })
                 // const res = await axios.post(env.apiURL + `bussinessUnit/BusinessUnit_UpdateData/${id}`, data)
                 // console.log(res);
+                ToasterSuccess("Success...!!");
                 setId(0)
             } catch (error) {
                 console.log(error);
+                ToasterError("Error");
             }
         }
 
@@ -116,6 +121,7 @@ function RecourceDetail() {
             })
             .catch(function (error) {
                 console.log(error)
+                ToasterError("Error");
             })
 
     }
@@ -125,6 +131,7 @@ function RecourceDetail() {
                 common.httpGet(deletegetRecourceDetail).then((res)=>{
                   RecourceDetailgetdata()
                 })
+                ToasterSuccess("Success...!!");
         // axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
         // .then((res) => {
         //     BussinssUnitgetdata()
@@ -163,6 +170,7 @@ function RecourceDetail() {
     
     return (
         <>
+            <ToastContainer />
             <Header />
             <LeftSection />
             {/* Update PopUP [Model] */}
