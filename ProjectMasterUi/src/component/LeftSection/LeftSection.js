@@ -37,25 +37,25 @@ function LeftSection() {
           </li>
           <li>
             <Link to="/FunctionalGroup">
-              <i className="fa fa-user" />
+              <i className="fa fa-calendar" />
               <span>Functional Group</span>
             </Link>
           </li>
           <li>
             <Link to="/Project">
-              <i className="fa fa-user" />
+              <i className="fa fa-check-square-o" />
               <span>Project</span>
             </Link>
           </li>
           <li>
             <Link to="/RecourceDetail">
-              <i className="fa fa-user" />
+              <i className="fa fa-address-book" />
               <span>Recource Detail</span>
             </Link>
           </li>
           <li>
             <Link to="/ProjectRecourceDetail">
-              <i className="fa fa-user" />
+              <i className="fa fa-comments" />
               <span>Project Recource</span>
             </Link>
           </li>
