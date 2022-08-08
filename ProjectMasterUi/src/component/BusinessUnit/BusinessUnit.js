@@ -6,7 +6,7 @@ import CommonService from "../../services/commonService";
 import { env } from "../../env";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
-import { ToasterSuccess, ToasterError } from "../../constants/toaster";
+import { ToasterSuccess, ToasterError } from "../../common/toaster";
 import urlConstant from "../../constants/urlConstant";
 
 function BusinessUnit() {
@@ -23,11 +23,11 @@ function BusinessUnit() {
   const SubmitHandler = async (e) => {
     if (id == 0) {
       const data = {
-        Name: Name,
-        CreateBy: CreateBy,
-        CreateDate: CreateDate,
-        ModifiedBy: ModifiedBy,
-        ModifiedDate: ModifiedDate,
+        Name,
+        CreateBy,
+        CreateDate,
+        ModifiedBy,
+        ModifiedDate,
       };
       try {
         // const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
@@ -45,11 +45,11 @@ function BusinessUnit() {
       SetModifiedDate("");
     } else {
       const data = {
-        Name: Name,
-        CreateBy: CreateBy,
-        CreateDate: CreateDate,
-        ModifiedBy: ModifiedBy,
-        ModifiedDate: ModifiedDate,
+        Name,
+        CreateBy,
+        CreateDate,
+        ModifiedBy,
+        ModifiedDate,
       };
       try {
         const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitUpdateData}/${id}`;

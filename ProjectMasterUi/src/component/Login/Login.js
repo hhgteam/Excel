@@ -1,9 +1,17 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { LoginData , incNumber, decNumber } from "../../action/LoginAction";
 
 function Login() {
+
+  const myState = useSelector((state) => state.loginRreducers);
+  const dispatch = useDispatch();
   return (
- 
+    <>
+
+
+
     <div className="auth">
     <div className="auth_left">
       <div className="card">
@@ -55,6 +63,11 @@ function Login() {
               <span className="custom-control-label">Remember me</span>
             </label>
           </div>
+
+
+          <h1>hello + {myState}</h1>
+      <button onClick={() => dispatch(decNumber())}>-</button>{" "}
+      <button onClick={() => dispatch(incNumber())}>+</button>
           <div className="form-footer">
             <a href="/" className="btn btn-primary btn-block" title="">
               Sign in
@@ -70,7 +83,7 @@ function Login() {
     <div className="auth_right full_img" />
   </div>
   
-   
+  </>
   )
 }
 

@@ -6,13 +6,15 @@ exports.RecourceDetail_PostData = async function (req, res, next) {
         UserId: req.body.UserId,
         Name: req.body.Name,
         CommitedCapacity: req.body.CommitedCapacity,
+        ApprovelCapacity: req.body.ApprovelCapacity,
         ResorcesCapacity: req.body.ResorcesCapacity,
         YearlyHour: req.body.YearlyHour,
         YearlyAllocation: req.body.YearlyAllocation,
         Notes: req.body.Notes,
         CreateBy: req.body.CreateBy,
         ModifiedBy: req.body.ModifiedBy,
-        
+        Year:req.body.Year,
+        Month:req.body.Month,
       };
       const RecourceDetail_PostData_Data = await RecourceDetailModel.create(
         RecourceDetail_PostData
@@ -93,6 +95,8 @@ exports.RecourceDetail_PostData = async function (req, res, next) {
       RecourceDetail_Data.YearlyAllocation = req.body.YearlyAllocation;
       RecourceDetail_Data.Notes = req.body.Notes;
       RecourceDetail_Data.CreateBy = req.body.CreateBy;
+      RecourceDetail_Data.Year = req.body.Year;
+      RecourceDetail_Data.Month = req.body.Month;
     
     
       const RecourceDetail_UpdateData_data = await RecourceDetailModel.findByIdAndUpdate(req.params.id , Function_FindById_Data)
