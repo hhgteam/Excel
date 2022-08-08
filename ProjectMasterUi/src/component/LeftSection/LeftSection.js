@@ -23,7 +23,7 @@ function LeftSection() {
       <nav id="left-sidebar-nav" className="sidebar-nav">
         <ul className="metismenu">
           <li className="g_heading">Project</li>
-          <li className="active">
+          <li>
             <Link to="/">
               <i className="fa fa-dashboard" />
               <span>Dashboard</span>
