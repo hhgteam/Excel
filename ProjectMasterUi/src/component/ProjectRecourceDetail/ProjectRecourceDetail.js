@@ -38,16 +38,18 @@ function ProjectRecourceDetail() {
             try {
                 // const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
                 const postProjectRecourcedata = `${urlConstant.ProjectRecourceDetail.ProjectRecourcePostData}`
-                common.httpPost(postProjectRecourcedata,data)
+                common.httpPost(postProjectRecourcedata,data).then(()=>{
+                    SetProjectId('');
+                    SetRecourceId('');
+                    SetCreateBy('');
+                    SetCreateDate('');
+                    SetModifiedBy('');
+                    SetModifiedDate('');
+                })
             } catch (error) {
                 console.log(error);
             }
-            SetProjectId('');
-            SetRecourceId('');
-            SetCreateBy('');
-            SetCreateDate('');
-            SetModifiedBy('');
-            SetModifiedDate('');
+           
         }
         else{
             const data = {
