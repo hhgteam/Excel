@@ -131,7 +131,7 @@ function RecourceDetail() {
                 common.httpDelete(deletegetRecourceDetail).then((res)=>{
                   RecourceDetailgetdata()
                 })
-                ToasterSuccess("Success...!!");
+             
         // axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
         // .then((res) => {
         //     BussinssUnitgetdata()
