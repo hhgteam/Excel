@@ -23,7 +23,7 @@ function LeftSection() {
       <nav id="left-sidebar-nav" className="sidebar-nav">
         <ul className="metismenu">
           <li className="g_heading">Project</li>
-          <li className="active">
+          <li>
             <Link to="/">
               <i className="fa fa-dashboard" />
               <span>Dashboard</span>
@@ -37,25 +37,25 @@ function LeftSection() {
           </li>
           <li>
             <Link to="/FunctionalGroup">
-              <i className="fa fa-user" />
+              <i className="fa fa-comments" />
               <span>Functional Group</span>
             </Link>
           </li>
           <li>
             <Link to="/Project">
-              <i className="fa fa-user" />
+              <i className="fa fa-check-square-o" />
               <span>Project</span>
             </Link>
           </li>
           <li>
             <Link to="/RecourceDetail">
-              <i className="fa fa-user" />
+              <i className="fa fa-address-book" />
               <span>Recource Detail</span>
             </Link>
           </li>
           <li>
             <Link to="/ProjectRecourceDetail">
-              <i className="fa fa-user" />
+              <i className="fa fa-calendar  " />
               <span>Project Recource</span>
             </Link>
           </li>
