@@ -119,10 +119,10 @@ function FunctionalGroup() {
   const deletehandler = async (id) => {
     const deleteFunctionalGroup = `${urlConstant.functionalGroup.functionalDeleteData}/${id}`;
 
-    common.httpdelete(deleteFunctionalGroup).then((res) => {
+    common.httpDelete(deleteFunctionalGroup).then((res) => {
       functionalGetData();
-    });
-    ToasterSuccess("Success...!!").catch((error) => {
+    })
+  .catch((error) => {
       ToasterError("Error");
     });
   };

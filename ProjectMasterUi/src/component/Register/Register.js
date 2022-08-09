@@ -57,18 +57,7 @@ function Register() {
   
   return (
    <>
-   <style >{`
-    .invalid{
-     border: 1px solid #dc3545;
-
-    }
-    .invalid_span{
-      color:red;
-    }
-    .valid_span{
-      display:none;
-    }
-`}</style>
+   
   <ToastContainer/>
 
     <div className="auth">

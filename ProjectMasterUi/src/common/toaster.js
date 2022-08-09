@@ -13,6 +13,10 @@ function ToasterError(Message) {
     autoClose: 2000,
   });
 }
-
-export { ToasterSuccess, ToasterError };
+function ToasterWarning(Message) {
+  toast.info(Message, {
+    autoClose: 2000,
+  });
+}
+export { ToasterSuccess, ToasterError , ToasterWarning };
 

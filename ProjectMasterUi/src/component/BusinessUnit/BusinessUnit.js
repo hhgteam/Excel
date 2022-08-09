@@ -16,11 +16,22 @@ function BusinessUnit() {
   const [CreateDate, SetCreateDate] = useState("");
   const [ModifiedBy, SetModifiedBy] = useState("");
   const [ModifiedDate, SetModifiedDate] = useState("");
+  const [Submitted , SetSubmitted] = useState(false);
   const [List, setList] = useState([]);
 
   let common = new CommonService();
 
   const SubmitHandler = async (e) => {
+    SetSubmitted(true)
+
+     if(!Name || !CreateBy || !CreateDate  )
+     { 
+
+        return false
+      
+     }
+
+
     if (id == 0) {
       const data = {
         Name,
@@ -33,7 +44,9 @@ function BusinessUnit() {
         // const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
         const postBussinssUnit = `${urlConstant.BusinessUnit.BusinessUnitPostData}`;
         common.httpPost(postBussinssUnit, data);
+        BussinssUnitgetdata()
         ToasterSuccess("Success...!!");
+        SetSubmitted(false)
       } catch (error) {
         console.log(error);
         ToasterError("Error");
@@ -92,7 +105,7 @@ function BusinessUnit() {
     common.httpDelete(deleteBussinssUnit).then((res) => {
       BussinssUnitgetdata();
     });
-    ToasterSuccess("Success...!!");
+   
     // axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
     // .then((res) => {
     //     BussinssUnitgetdata()
@@ -118,6 +131,18 @@ function BusinessUnit() {
 
   return (
     <>
+    {/* <style >{`
+    .invalid{
+     border: 1px solid #dc3545;
+
+    }
+    .invalid_span{
+      color:red;
+    }
+    .valid_span{
+      display:none;
+    }
+`}</style> */}
       <ToastContainer />
       <Header />
       <LeftSection />
@@ -645,18 +670,20 @@ function BusinessUnit() {
                                                     </a>
                                                 </div>
                                             </div>
-                                            <form className="card-body" onSubmit={SubmitHandler}>
+                                            <form className="card-body" >
                                                 <div className="row clearfix">
                                                     <div className="col-md-6 col-sm-12">
                                                         <div className="form-group">
                                                             <label>Name</label>
-                                                            <input type="text" className="form-control" value={Name} onChange={(e) => { SetName(e.target.value) }} />
+                                                            <input type="text" className={'form-control' + ( Submitted && !Name ? ' invalid' : '')} value={Name} onChange={(e) => { SetName(e.target.value) }} />
+                                                            <span  className={ ( Submitted && !Name ? ' invalid_span' : 'valid_span')}>Name is requried</span>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-sm-12">
                                                         <div className="form-group">
                                                             <label>CreateBy</label>
-                                                            <input type="text" className="form-control" value={CreateBy} onChange={(e) => { SetCreateBy(e.target.value) }} />
+                                                            <input type="text" className={'form-control' + ( Submitted && !CreateBy ? ' invalid' : '')} value={CreateBy} onChange={(e) => { SetCreateBy(e.target.value) }} />
+                                                            <span  className={ ( Submitted && !CreateBy ? ' invalid_span' : 'valid_span')}>CreateBy is requried</span>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-3 col-sm-12">
@@ -666,12 +693,13 @@ function BusinessUnit() {
                                                                 data-provide="datepicker"
                                                                 data-date-autoclose="true"
                                                                 type="date"
-                                                                className="form-control"
+                                                                className={'form-control' + ( Submitted && !CreateDate ? ' invalid' : '')}
                                                                 placeholder="Date of Birth"
                                                                 value={CreateDate}
                                                                 onChange={(e) => { SetCreateDate(e.target.value) }}
 
                                                             />
+                                                            <span  className={ ( Submitted && !CreateDate ? ' invalid_span' : 'valid_span')}>CreateDate is requried</span>
                                                         </div>
                                                     </div>
                                                     {/* <div className="col-md-3 col-sm-12">
@@ -682,8 +710,8 @@ function BusinessUnit() {
                                                             <option value={20}>Female</option>
                                                         </select>
                                                     </div> */}
-                          <div className="col-md-3 col-sm-12">
-                            <div className="form-group">
+                          {/* <div className="col-md-3 col-sm-12"> */}
+                            {/* <div className="form-group">
                               <label>ModifiedBy</label>
                               <input
                                 type="text"
@@ -693,9 +721,9 @@ function BusinessUnit() {
                                   SetModifiedBy(e.target.value);
                                 }}
                               />
-                            </div>
-                          </div>
-                          <div className="col-md-3 col-sm-12">
+                            </div> */}
+                          {/* </div> */}
+                          {/* <div className="col-md-3 col-sm-12">
                             <div className="form-group">
                               <label>ModifiedDate</label>
                               <input
@@ -707,21 +735,23 @@ function BusinessUnit() {
                                 }}
                               />
                             </div>
-                          </div>
+                          </div> */}
 
                           <div className="col-sm-12 ">
                             {/* <button type="submit" className="btn btn-primary" onClick={() => { SubmitHandler() }}>
                                                             Submit
                                                         </button> */}
                             <input
-                              type="submit"
+                              type='submit'
                               class="btn btn-primary"
                               value="Submit"
+                              onClick={SubmitHandler}
                             />
 
                             <button
                               type="submit"
                               className="btn btn-outline-secondary mx-2"
+                              
                             >
                               Cancel
                             </button>

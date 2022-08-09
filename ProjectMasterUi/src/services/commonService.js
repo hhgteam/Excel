@@ -1,4 +1,5 @@
 import axiosInstance from '../common/Interceptor';
+import { ToasterSuccess, ToasterError , ToasterWarning } from "../common/toaster";
 import swal from 'sweetalert'
 
 //import axios from 'axios';
@@ -36,11 +37,19 @@ class CommonService {
                 axiosInstance.delete(requestURL)
                 .then((response) => {
                     resolve(response);
+                ToasterSuccess("Success...!!");
+
                 })
                 .catch((error) => {
                     reject(error);
+                    
+
                 });
                   
+              }
+              else
+              {
+                ToasterWarning("Your Data Safe...!!");
               }
               
              
