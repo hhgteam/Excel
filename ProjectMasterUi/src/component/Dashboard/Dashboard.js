@@ -1251,8 +1251,8 @@ function Dashboard() {
                         </thead>
                         <tbody>
                           <tr>
-                            <td>/AD1245</td>
-                            <td>Sean Black</td>
+                            <td>/PV1234</td>
+                            <td>Parth Vaghasiya</td>
                             <td>
                               <ul className="list-unstyled team-info sm margin-0 w150">
                                 <li>
@@ -1284,7 +1284,7 @@ function Dashboard() {
                                 </li>
                               </ul>
                             </td>
-                            <td>Angular Admin</td>
+                            <td>React Admin</td>
                             <td>$14,500</td>
                             <td>Done</td>
                             <td>
@@ -1292,8 +1292,8 @@ function Dashboard() {
                             </td>
                           </tr>
                           <tr>
-                            <td>/DF1937</td>
-                            <td>Sean Black</td>
+                            <td>/MG1234</td>
+                            <td>Mukunj Gabani</td>
                             <td>
                               <ul className="list-unstyled team-info sm margin-0 w150">
                                 <li>
@@ -1333,8 +1333,8 @@ function Dashboard() {
                             </td>
                           </tr>
                           <tr>
-                            <td>/YU8585</td>
-                            <td>Merri Diamond</td>
+                            <td>/KS1234</td>
+                            <td>Keyur Satani</td>
                             <td>
                               <ul className="list-unstyled team-info sm margin-0 w150">
                                 <li>
@@ -1349,18 +1349,33 @@ function Dashboard() {
                                     alt="Avatar"
                                   />
                                 </li>
+                                <li>
+                                  <img
+                                    src="assets/images/xs/avatar3.jpg"
+                                    alt="Avatar"
+                                  />
+                                </li>
+                                <li>
+                                  <img
+                                    src="assets/images/xs/avatar4.jpg"
+                                    alt="Avatar"
+                                  />
+                                </li>
+                                <li className="ml-2">
+                                  <span>2+</span>
+                                </li>
                               </ul>
                             </td>
-                            <td>One page html Admin</td>
-                            <td>$500</td>
+                            <td>React Js Admin</td>
+                            <td>$50,000</td>
                             <td>Done</td>
                             <td>
                               <span className="tag tag-orange">Submit</span>
                             </td>
                           </tr>
                           <tr>
-                            <td>/AD1245</td>
-                            <td>Sean Black</td>
+                            <td>/VG1234</td>
+                            <td>Vikas Guna</td>
                             <td>
                               <ul className="list-unstyled team-info sm margin-0 w150">
                                 <li>
@@ -1389,8 +1404,8 @@ function Dashboard() {
                                 </li>
                               </ul>
                             </td>
-                            <td>Wordpress One page</td>
-                            <td>$1,500</td>
+                            <td>React Native Developer</td>
+                            <td>$15,000</td>
                             <td>Done</td>
                             <td>
                               <span className="tag tag-success">Delivered</span>
@@ -1431,7 +1446,7 @@ function Dashboard() {
                               </ul>
                             </td>
                             <td>VueJs Application</td>
-                            <td>$9,500</td>
+                            <td>$19,500</td>
                             <td>Done</td>
                             <td>
                               <span className="tag tag-success">Delivered</span>
