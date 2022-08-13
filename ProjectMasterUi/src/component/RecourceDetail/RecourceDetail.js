@@ -360,7 +360,7 @@ function RecourceDetail() {
                                                             return (<>
                                                                 <tr>
                                                                     <td>{i + 1}</td>
-                                                                    <td>{item.UserId}</td>
+                                                                    <td className="text-left">{item.UserId}</td>
                                                                     <td>{item.Name}</td>
                                                                     <td>{item.CommitedCapacity}</td>
                                                                     <td>{item.ApprovelCapacity}</td>
