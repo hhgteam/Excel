@@ -123,7 +123,6 @@ function RecourceDetail() {
                 console.log(error)
                 ToasterError("Error");
             })
-
     }
 
     const deletehandler = async (id) => {
