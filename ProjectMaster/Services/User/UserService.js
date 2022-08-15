@@ -30,7 +30,7 @@ exports.registerUser = async function (req, res, next) {
     const user = await UserModel.create({
       UserName,  
       Email: Email, // sanitize: convert email to lowercase
-      encryptedPassword,
+      Password:encryptedPassword,
       IsActive:true,
       FirstName,
       LastName,
@@ -76,6 +76,7 @@ exports.loginUser = async function (req, res, next) {
         }
         // Validate if user exist in our database
         const user = await UserModel.findOne({ Email });
+        
         if (user && (await bcrypt.compare(Password, user.Password))) {
           // Create token
           const token = jwt.sign(

@@ -3,8 +3,14 @@ import Header from "../Header/Header";
 import LeftSection from "../LeftSection/LeftSection";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
+// import { useSelector } from "react-redux";
 
 function Dashboard() {
+  // const users = useSelector((state) => state.user);
+  // setTimeout(() => {
+  //   console.log(users);
+  // }, 1000);
+ 
   return (
     <>
       <LeftSection />

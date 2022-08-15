@@ -29,6 +29,7 @@ const urlConstant = {
   },
   User:{
     UserDataPost: `${apiURL}users/register`,
+    UserLogin: `${apiURL}users/login`
   },
   recourceDetail:{
     getRecourceData:  `${apiURL}recourcedetail/RecourceDetail_GetData`,
