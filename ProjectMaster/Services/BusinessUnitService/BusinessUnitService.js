@@ -1,5 +1,8 @@
 // const BusinessUnit = require("../../model/BusinessUnitModel");
 const BussinessUnitModel = require("../../model/BusinessUnitModel");
+var MongoClient = require("mongodb").MongoClient;
+
+var url = "mongodb+srv://HHG:HHG@cluster0.f2c5v.mongodb.net/ProjectMaster?retryWrites=true&w=majority";
 
 // exports.insertBussenessUnitData = async function (req, res, next) {
 //   try {
@@ -28,6 +31,10 @@ const BussinessUnitModel = require("../../model/BusinessUnitModel");
 //   };
 
 exports.BusinessUnit_PostData = async function (req, res, next) {
+
+
+
+
   try {
     const Business_PostData_Data = {
       Name: req.body.Name,
@@ -50,6 +57,30 @@ exports.BusinessUnit_PostData = async function (req, res, next) {
       error,
     });
   }
+};
+
+
+
+exports.get_join_data = async function (req, res, next) {
+  MongoClient.connect(url, async (err, db) => {
+    if (err) throw err;
+
+    const data = await BussinessUnitModel.aggregate([
+      {
+        $lookup: {
+          from: 'users',
+          localField: 'Name',
+          foreignField: 'UserName',
+          as: 'login'
+        },
+      }
+    ]);
+
+    console.log(data);
+    res.status(200).send({
+      data: data,
+    });
+  });
 };
 
 exports.BusinessUnit_GetData = async function (req, res, next) {

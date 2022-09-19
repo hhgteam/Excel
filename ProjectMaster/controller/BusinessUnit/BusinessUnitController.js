@@ -33,3 +33,9 @@ exports.BusinessUnit_UpdateData  = async function (req, res, next) {
 //    .then(user => res.json(user))
 //         .catch(next);
 };
+
+exports.get_join_data  = async function (req, res, next) {
+    return BusinessUnitService.get_join_data(req, res, next)
+//    .then(user => res.json(user))
+//         .catch(next);
+};

@@ -11,5 +11,6 @@ router.get("/BusinessUnit_GetData", api.BusinessUnit_GetData);
 router.delete("/BusinessUnit_DeleteData/:id", api.BusinessUnit_DeleteData);
 router.get("/BusinessUnit_FindData/:id", api.BusinessUnit_FindData);
 router.post("/BusinessUnit_UpdateData/:id", api.BusinessUnit_UpdateData);
+router.get("/get_join_data", api.get_join_data);
 
 module.exports = router;
