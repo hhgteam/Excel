@@ -2,51 +2,52 @@ import React, { useState, useEffect } from 'react'
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import LeftSection from '../LeftSection/LeftSection';
-import  CommonService from '../../services/commonService';
+import CommonService from '../../services/commonService';
 import { env } from '../../env'
 import axios from 'axios';
 import urlConstant from '../../constants/urlConstant';
 import { ToastContainer } from "react-toastify";
 import { ToasterSuccess, ToasterError } from "../../common/toaster";
+import Pagination from '../../services/Pagination';
 function RecourceDetail() {
-  const [id, setId] = useState(0);
-  const [Name, SetName] = useState("");
-  const [Userid, SetUserid] = useState("");
-  const [CommitedCapacity, SetCommitedCapacity] = useState("");
-  const [ApprovelCapacity, SetApprovelCapacity] = useState("");
-  const [ResorcesCapacity, SetResorcesCapacity] = useState("");
-  const [Notes, SetNotes] = useState("");
-  const [Year, SetYear] = useState("");
-  const [Month, SetMonth] = useState("");
-  const [CreateBy, SetCreateBy] = useState("");
-  const [CreateDate, SetCreateDate] = useState("");
-  const [ModifiedBy, SetModifiedBy] = useState("");
-  const [ModifiedDate, SetModifiedDate] = useState("");
-  const [RecourceList, setRecourceList] = useState([]);
+    const [id, setId] = useState(0);
+    const [Name, SetName] = useState("");
+    const [Userid, SetUserid] = useState("");
+    const [CommitedCapacity, SetCommitedCapacity] = useState("");
+    const [ApprovelCapacity, SetApprovelCapacity] = useState("");
+    const [ResorcesCapacity, SetResorcesCapacity] = useState("");
+    const [Notes, SetNotes] = useState("");
+    const [Year, SetYear] = useState("");
+    const [Month, SetMonth] = useState("");
+    const [CreateBy, SetCreateBy] = useState("");
+    const [CreateDate, SetCreateDate] = useState("");
+    const [ModifiedBy, SetModifiedBy] = useState("");
+    const [ModifiedDate, SetModifiedDate] = useState("");
+    const [RecourceList, setRecourceList] = useState([]);
 
 
     let common = new CommonService()
-    
+
     const SubmitHandler = async (e) => {
         if (id == 0) {
             const data = {
-              UserId: Userid,
-              Name: Name,
-              CommitedCapacity: CommitedCapacity,
-              ApprovelCapacity :ApprovelCapacity, 
-              ResorcesCapacity :ResorcesCapacity,
-              Notes :Notes, 
-              Year:Year,
-              Month:Month,
-              CreateBy:CreateBy,
-              CreateDate: CreateDate,
-              ModifiedBy: ModifiedBy,
-              ModifiedDate: ModifiedDate,
+                UserId: Userid,
+                Name: Name,
+                CommitedCapacity: CommitedCapacity,
+                ApprovelCapacity: ApprovelCapacity,
+                ResorcesCapacity: ResorcesCapacity,
+                Notes: Notes,
+                Year: Year,
+                Month: Month,
+                CreateBy: CreateBy,
+                CreateDate: CreateDate,
+                ModifiedBy: ModifiedBy,
+                ModifiedDate: ModifiedDate,
             }
             try {
                 // const res = await axios.post(env.apiURL + 'bussinessUnit/BusinessUnit_PostData', data)
                 const postRecourceDetail = `${urlConstant.recourceDetail.recourcePostData}`
-                common.httpPost(postRecourceDetail,data);
+                common.httpPost(postRecourceDetail, data);
                 ToasterSuccess("Success...!!");
             } catch (error) {
                 console.log(error);
@@ -65,25 +66,25 @@ function RecourceDetail() {
             SetModifiedBy("");
             SetModifiedDate("");
         }
-        else{
+        else {
             const data = {
-              UserId: Userid,
-              Name: Name,
-              CommitedCapacity: CommitedCapacity,
-              ApprovelCapacity :ApprovelCapacity, 
-              ResorcesCapacity :ResorcesCapacity,
-              Notes :Notes, 
-              Year:Year,
-              Month:Month,
-              CreateBy:CreateBy,
-              CreateDate: CreateDate,
-              ModifiedBy: ModifiedBy,
-              ModifiedDate: ModifiedDate,
+                UserId: Userid,
+                Name: Name,
+                CommitedCapacity: CommitedCapacity,
+                ApprovelCapacity: ApprovelCapacity,
+                ResorcesCapacity: ResorcesCapacity,
+                Notes: Notes,
+                Year: Year,
+                Month: Month,
+                CreateBy: CreateBy,
+                CreateDate: CreateDate,
+                ModifiedBy: ModifiedBy,
+                ModifiedDate: ModifiedDate,
             }
             try {
                 const postRecourceDetail = `${urlConstant.recourceDetail.recourceUpdateData}/${id}`
-                common.httpPost(postRecourceDetail,data).then((res)=>{
-                  RecourceDetailgetdata()
+                common.httpPost(postRecourceDetail, data).then((res) => {
+                    RecourceDetailgetdata()
                 })
                 // const res = await axios.post(env.apiURL + `bussinessUnit/BusinessUnit_UpdateData/${id}`, data)
                 // console.log(res);
@@ -117,7 +118,7 @@ function RecourceDetail() {
         const getRecourceDetail = `${urlConstant.recourceDetail.getRecourceData}`
         common.httpGet(getRecourceDetail)
             .then(function (res) {
-              setRecourceList(res.data.data)
+                setRecourceList(res.data.data)
             })
             .catch(function (error) {
                 console.log(error)
@@ -127,10 +128,10 @@ function RecourceDetail() {
 
     const deletehandler = async (id) => {
         const deletegetRecourceDetail = `${urlConstant.recourceDetail.recourceDeleteData}/${id}`
-                common.httpDelete(deletegetRecourceDetail).then((res)=>{
-                  RecourceDetailgetdata()
-                })
-             
+        common.httpDelete(deletegetRecourceDetail).then((res) => {
+            RecourceDetailgetdata()
+        })
+
         // axios.delete(env.apiURL + `bussinessUnit/BusinessUnit_DeleteData/${id}`, {})
         // .then((res) => {
         //     BussinssUnitgetdata()
@@ -141,32 +142,41 @@ function RecourceDetail() {
         const getRecourceDetail = `${urlConstant.recourceDetail.recourceFindData}/${id}`
         common.httpGet(getRecourceDetail)
             .then((result) => {
-              setId(id)
-              SetUserid(result.data.data.UserId);
-              SetName(result.data.data.Name)
-              SetCommitedCapacity(result.data.data.CommitedCapacity);
-              SetApprovelCapacity(result.data.data.ApprovelCapacity);
-              SetResorcesCapacity(result.data.data.ResorcesCapacity);
-              SetNotes(result.data.data.Notes);
-              SetYear(result.data.data.Year);
-              SetMonth(result.data.data.Month);
-        // SetCreateBy("");
-        // SetCreateDate("");
-        // SetModifiedBy("");
-        // SetModifiedDate("");
-        //SetCreateBy(result.data.data.CreateBy)
-        // SetCreateDate(result.data.data.CreateDate)
-        // SetModifiedBy(result.data.data.ModifiedBy)
-        // SetModifiedDate(result.data.data.ModifiedDate)
-        // console.log(result);
+                setId(id)
+                SetUserid(result.data.data.UserId);
+                SetName(result.data.data.Name)
+                SetCommitedCapacity(result.data.data.CommitedCapacity);
+                SetApprovelCapacity(result.data.data.ApprovelCapacity);
+                SetResorcesCapacity(result.data.data.ResorcesCapacity);
+                SetNotes(result.data.data.Notes);
+                SetYear(result.data.data.Year);
+                SetMonth(result.data.data.Month);
+                // SetCreateBy("");
+                // SetCreateDate("");
+                // SetModifiedBy("");
+                // SetModifiedDate("");
+                //SetCreateBy(result.data.data.CreateBy)
+                // SetCreateDate(result.data.data.CreateDate)
+                // SetModifiedBy(result.data.data.ModifiedBy)
+                // SetModifiedDate(result.data.data.ModifiedDate)
+                // console.log(result);
 
             })
     }
 
     useEffect(() => {
-      RecourceDetailgetdata()
+        RecourceDetailgetdata()
     }, [])
-    
+
+    const [show, setShow] = useState(5);
+    const [pagination, setPagination] = useState({
+        start: 0,
+        end: show
+    });
+    const onPagination =(start,end) =>{
+        setPagination({start:start,end:end})
+    }
+ 
     return (
         <>
             <ToastContainer />
@@ -185,7 +195,7 @@ function RecourceDetail() {
                             </div>
                             <div class="modal-body">
                                 <form onSubmit={SubmitHandler}>
-                                <div class="mb-3">
+                                    <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">UserId</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={Userid} onChange={(e) => { SetUserid(e.target.value) }} />
                                     </div>
@@ -199,20 +209,20 @@ function RecourceDetail() {
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">ApprovelCapacity</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={ApprovelCapacity} onChange={(e) => { SetApprovelCapacity(e.target.value) }}  />
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={ApprovelCapacity} onChange={(e) => { SetApprovelCapacity(e.target.value) }} />
 
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">ResorcesCapacity</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value={ResorcesCapacity} onChange={(e) => { SetResorcesCapacity(e.target.value) }} />
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={ResorcesCapacity} onChange={(e) => { SetResorcesCapacity(e.target.value) }} />
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Notes</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value={Notes} onChange={(e) => { SetNotes(e.target.value) }} />
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={Notes} onChange={(e) => { SetNotes(e.target.value) }} />
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Year</label>
-                                        <input type="date" class="form-control" id="exampleInputPassword1"  value={Year} onChange={(e) => { SetYear(e.target.value) }} />
+                                        <input type="date" class="form-control" id="exampleInputPassword1" value={Year} onChange={(e) => { SetYear(e.target.value) }} />
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Month</label>
@@ -223,46 +233,47 @@ function RecourceDetail() {
                             <div class="modal-footer">
 
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type='submit'  class="btn btn-primary" data-dismiss="modal" onClick={()=>{SubmitHandler()}}>Save changes</button>
+                                <button type='submit' class="btn btn-primary" data-dismiss="modal" onClick={() => { SubmitHandler() }}>Save changes</button>
 
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
 
 
 
                 <div id="page_top" className="section-body top_dark">
-                <div className="container-fluid">
-                <div className="container-fluid">
-                        <div className="page-header">
-                            <div className="left">
-                                <a href="javascript:void(0)" className="icon menu_toggle mr-3">
-                                    <i className="fa  fa-align-left" />
-                                </a>
-                                <h1 className="page-title">RecourceDetail</h1>
-                            </div>
-                            <div className="right">
-                                <div 
-                                    className="notification d-flex"
-                                    style={{ display: "none !important" }}
-                                >                             
-                                    <div className="dropdown d-flex">
-                                        <a
-                                            className="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2"
-                                            data-toggle="dropdown"
-                                        >
-                                            <i className="fa fa-user" />
-                                        </a>
-                                        <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a className="dropdown-item" href="page-profile.html">
-                                                <i className="dropdown-icon fe fe-user" /> Profile
+                    <div className="container-fluid">
+                        <div className="container-fluid">
+                            <div className="page-header">
+                                <div className="left">
+                                    <a href="javascript:void(0)" className="icon menu_toggle mr-3">
+                                        <i className="fa  fa-align-left" />
+                                    </a>
+                                    <h1 className="page-title">RecourceDetail</h1>
+                                </div>
+                                <div className="right">
+                                    <div
+                                        className="notification d-flex"
+                                        style={{ display: "none !important" }}
+                                    >
+                                        <div className="dropdown d-flex">
+                                            <a
+                                                className="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2"
+                                                data-toggle="dropdown"
+                                            >
+                                                <i className="fa fa-user" />
                                             </a>
-                                    
-                                            <a className="dropdown-item" href="login.html">
-                                                <i className="dropdown-icon fe fe-log-out" /> Sign out
-                                            </a>
+                                            <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a className="dropdown-item" href="page-profile.html">
+                                                    <i className="dropdown-icon fe fe-user" /> Profile
+                                                </a>
+
+                                                <a className="dropdown-item" href="login.html">
+                                                    <i className="dropdown-icon fe fe-log-out" /> Sign out
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -270,7 +281,6 @@ function RecourceDetail() {
                         </div>
                     </div>
                 </div>
-            </div>
                 <div className="section-body mt-3">
                     <div className="container-fluid">
                         <div className="row clearfix">
@@ -355,9 +365,9 @@ function RecourceDetail() {
                                                     </thead>
                                                     <tbody className="text-center">
 
-                                                        {RecourceList.map((item, i) => {
+                                                        {RecourceList.slice(pagination.start, pagination.end).map((item, i) => {
                                                             return (<>
-                                                                <tr>
+                                                                <tr key={i}>
                                                                     <td>{i + 1}</td>
                                                                     <td className="text-left">{item.UserId}</td>
                                                                     <td>{item.Name}</td>
@@ -390,6 +400,8 @@ function RecourceDetail() {
                                         </div>
                                     </div>
                                 </div>
+                                <Pagination show={show} onPagination={onPagination} total={RecourceList.length}/>
+
                             </div>
                             <div className="tab-pane fade" id="addnew" role="tabpanel">
                                 <div className="row">
@@ -416,7 +428,7 @@ function RecourceDetail() {
                                             </div>
                                             <form className="card-body" onSubmit={SubmitHandler}>
                                                 <div className="row clearfix">
-                                                <div className="col-md-6 col-sm-12">
+                                                    <div className="col-md-6 col-sm-12">
                                                         <div className="form-group">
                                                             <label>UserId</label>
                                                             <input type="text" className="form-control" value={Userid} onChange={(e) => { SetUserid(e.target.value) }} />
@@ -478,16 +490,16 @@ function RecourceDetail() {
                                                     <div className="col-md-6 col-sm-12">
                                                         <div className="form-group">
                                                             <label>Month</label>
-                                                            <input type="date"  data-provide="datepicker" data-date-autoclose="true"  className="form-control" value={Month} onChange={(e) => { SetMonth(e.target.value) }} />
+                                                            <input type="date" data-provide="datepicker" data-date-autoclose="true" className="form-control" value={Month} onChange={(e) => { SetMonth(e.target.value) }} />
                                                         </div>
                                                     </div>
-                                                    
+
 
                                                     <div className="col-sm-12 ">
                                                         {/* <button type="submit" className="btn btn-primary" onClick={() => { SubmitHandler() }}>
                                                             Submit
                                                         </button> */}
-                                                        <input type='submit' class="btn btn-primary" value='Submit'/>
+                                                        <input type='submit' class="btn btn-primary" value='Submit' />
 
                                                         <button
                                                             type="submit"
