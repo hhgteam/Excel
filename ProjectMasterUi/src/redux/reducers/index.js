@@ -1,24 +1,7 @@
-const initialState = {
-    user: {},
-    loggedInIser: null,
-  };
-  const loginReducers = (state = initialState, action) => {
-    switch (action.type) {
-      case "LOGIN":
-        return {
-          ...state,
-          user: action.payload,
-        };
-      case "LOGOUT":
-        return {
-          ...state,
-          user: null,
-        };
+import loginRreducers from "./loginReducers";
+import { combineReducers } from "redux";
 
-      default:
-        return state;
-    }
-  };
-
-
-  export default loginReducers;
+const rootReducer = combineReducers({
+    loginRreducers,
+});
+export default rootReducer;
